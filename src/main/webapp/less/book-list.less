@@ -1,0 +1,38 @@
+/* books-list.html */
+
+#book-listing {
+  
+  img { height: 130px; float: left; margin: 0 15px 5px 0; }
+  p { max-height: 130px; }
+  
+  @media screen and (max-width: @tiny-width) { 
+    img { height: 100px; }
+    p { max-height: 110px; }
+  }
+  
+}
+
+.search-panel { 
+  float: right;
+  width: 260px;
+   
+  @media screen and (max-width: @tiny-width) { 
+    float: none; 
+    padding-top: 10px;
+    padding-left: 15px;
+  }
+  
+}
+
+.book-title-wrapper {
+  h4 { display: inline-block; }
+  h5 { margin-top: 2px; }
+  a { margin: 0 0 5px 0; }
+}
+
+.book-description-wrapper { 
+  overflow: hidden; 
+  img { border: 1px solid #ccc; }
+  
+}
+

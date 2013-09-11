@@ -1,0 +1,34 @@
+<div data-navbar></div>
+
+<div class="search-panel">
+  <form id="search-form" data-ng-submit="search(query)">
+    <div class="form-group">
+      <div class="input-group">
+       <input type="text" class="form-control" id="search-input" placeholder="Search by title or author" data-ng-model="query" />
+       <span class="input-group-addon" data-ng-click="searchIcon()">
+       <i class="glyphicon glyphicon-search" data-ng-show="!showClear"></i>
+       <i class="glyphicon glyphicon-remove" data-ng-show="showClear"></i>
+       </span>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="row">
+  <div id="book-listing" class="col-12">
+    <div data-ng-repeat="book in books" class="book-item">
+      <div class="book-title-wrapper">
+        <h4 class="title">{{book.title}}</h4>
+        <a data-ng-show="canEdit" href="#/books/{{book.id}}">
+          <i class="glyphicon glyphicon-pencil"></i>
+        </a>
+        <h5 class="author">{{book.author}}</h5>
+      </div>
+      <div class="book-description-wrapper">
+        <img data-ng-src="api/artwork/{{book.artwork}}" data-ng-if="hasArtwork(book)">
+        <p>{{book.description}}</p>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
+

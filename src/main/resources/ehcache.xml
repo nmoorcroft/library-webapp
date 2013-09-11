@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd">
+  
+  <diskStore path="java.io.tmpdir" />
+
+  <defaultCache eternal="false" timeToIdleSeconds="1200" timeToLiveSeconds="1200" />
+  
+  <cache name="com.zuhlke.library.domain.Book" 
+    maxElementsInMemory="200" 
+    eternal="false" 
+    overflowToDisk="false" 
+    timeToIdleSeconds="7200" 
+    timeToLiveSeconds="21600" />
+  
+  <cache name="com.zuhlke.library.domain.User" 
+    maxElementsInMemory="20" 
+    eternal="true" 
+    overflowToDisk="false" />
+    
+  <cache name="com.zuhlke.library.domain.Comment"
+    maxElementsInMemory="5000" 
+    eternal="false" 
+    overflowToDisk="false" 
+    timeToIdleSeconds="1200" 
+    timeToLiveSeconds="3600" />
+
+
+</ehcache>
+

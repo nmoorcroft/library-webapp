@@ -1,0 +1,13 @@
+<groups xmlns="http://www.isdc.ro/wro"> 
+  
+  <group name="app">
+    <js>/src/main/javascript/*.js</js>
+    <js>/src/main/javascript/services/*.js</js>
+    <js>/src/main/javascript/controllers/*.js</js>
+    <js>/src/main/javascript/directives/*.js</js>
+    <css>/src/main/webapp/less/styles.less</css>
+  </group>
+  
+</groups>
+
+

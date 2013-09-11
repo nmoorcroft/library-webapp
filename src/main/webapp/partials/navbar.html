@@ -1,0 +1,12 @@
+<div class="header">
+  <h1>My Library</h1>
+  <span class="menu not-logged-in" data-ng-hide="fullName">
+    <a class="login" href="#/login">Login</a>
+    <a class="signup" href="#/signup">Sign up</a>
+  </span>
+  <span class="menu logged-in" data-ng-show="fullName">
+    <a class="login" href="javascript:;">{{fullName}}</a>
+    <a class="createBook" href="#/books/new" data-ng-show="isAdmin">Create Book</a>
+    <a class="logout" href="javascript:;" data-ng-click="logout()">Logout</a>
+  </span>
+</div>

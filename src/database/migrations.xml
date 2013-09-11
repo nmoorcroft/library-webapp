@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+  <changeSet id="1" author="nmo">
+    <createTable tableName="hibernate_sequences">
+      <column name="sequence_name" type="varchar(255)">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="next_val" type="bigint">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+
+    <createTable tableName="book">
+      <column name="book_id" type="bigint">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="title" type="varchar(500)">
+        <constraints nullable="false" />
+      </column>
+      <column name="description" type="varchar(2000)">
+        <constraints nullable="true" />
+      </column>
+      <column name="author" type="varchar(500)">
+        <constraints nullable="false" />
+      </column>
+      <column name="artwork" type="varchar(500)">
+        <constraints nullable="true" />
+      </column>
+    </createTable>
+
+    <createTable tableName="library_user">
+      <column name="user_id" type="bigint">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="email" type="varchar(100)">
+        <constraints nullable="false" />
+      </column>
+      <column name="password" type="varchar(100)">
+        <constraints nullable="false" />
+      </column>
+      <column name="role" type="varchar(20)">
+        <constraints nullable="false" />
+      </column>
+      <column name="fullname" type="varchar(250)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+    
+  </changeSet>
+    
+  <changeSet id="2" author="nmo">
+
+    <insert tableName="library_user">
+      <column name="user_id" value="1" />
+      <column name="email" value="admin@zuhlke.com" />
+      <column name="password" value="7Le61jX4m+a+1TNd/ltaD7ee+jyqsgYV0Mfd0EYS18RqxBX+9YfVbkXZRd9/VdZAJ7l/SDcQn03NicBe5vnj8A==" />
+      <column name="role" value="ADMINISTRATOR" />
+      <column name="fullname" value="Administrator" />
+    </insert>  
+
+    <insert tableName="hibernate_sequences">
+      <column name="sequence_name" value="user" />
+      <column name="next_val" value="101" />
+    </insert>  
+    
+  </changeSet>
+
+  <changeSet id="3" author="nmo">
+    <createTable tableName="comment">
+      <column name="comment_id" type="bigint">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="comment" type="varchar(2000)">
+        <constraints nullable="false" />
+      </column>
+      <column name="created_date" type="timestamp">
+        <constraints nullable="false" />
+      </column>
+      <column name="user_id" type="bigint">
+        <constraints nullable="false" references="library_user(user_id)" foreignKeyName="comment_user" />
+      </column>
+      <column name="book_id" type="bigint">
+        <constraints nullable="false" references="book(book_id)" foreignKeyName="comment_book" />
+      </column>
+    </createTable>
+  </changeSet>
+
+
+</databaseChangeLog>
+
