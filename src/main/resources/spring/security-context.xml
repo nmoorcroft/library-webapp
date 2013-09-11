@@ -23,7 +23,7 @@
       <intercept-url pattern="/api/authenticate" access="permitAll" /> 
       <intercept-url pattern="/api/books" access="permitAll" /> 
       <intercept-url pattern="/api/logout" access="permitAll" /> 
-      <intercept-url pattern="/api/**" access="hasRole('ROLE_USER')" /> 
+      <intercept-url pattern="/api/artwork/upload" access="hasRole('ROLE_ADMIN')" /> 
     </http>
     
     <authentication-manager />
