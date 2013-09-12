@@ -1,18 +1,26 @@
 package com.zuhlke.library.artwork;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.activation.DataHandler;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 @Component
 @Path("/artwork")
@@ -33,12 +41,13 @@ public class ArtworkResource {
         }
     }
     
-//    @POST @Path("/upload")
-//    @Consumes(MediaType.MULTIPART_FORM_DATA)
-//    public String saveArtwork(@FormDataParam("files[]") InputStream in, @FormDataParam("files[]") FormDataContentDisposition file) throws Exception {
-//        return artworkService.saveArtwork(IOUtils.toByteArray(in));
-//    }
-
+    @POST @Path("/upload")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public String upload(final List<Attachment> attachments) throws Exception {
+    	Assert.notEmpty(attachments);
+        DataHandler handler = attachments.get(0).getDataHandler();
+        return artworkService.saveArtwork(IOUtils.toByteArray(handler.getInputStream()));
+    }
+    
 }
-
 

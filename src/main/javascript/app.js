@@ -1,4 +1,4 @@
-angular.module('libraryApp', [ 'library.services', 'library.controllers', 'library.filters', 'library.directives' ])
+angular.module('libraryApp', [ 'library.services', 'library.controllers', 'library.filters', 'library.directives', 'ngCookies', 'ngResource' ])
 
 .config(function($routeProvider) {
   $routeProvider.when('/login', {
@@ -75,13 +75,19 @@ angular.module('libraryApp', [ 'library.services', 'library.controllers', 'libra
     $httpProvider.responseInterceptors.push(errorInterceptor);
     $httpProvider.responseInterceptors.push(authInterceptor);
 
+})
+
+.run(function(authService) {
+  // user may already have a logged in session
+  authService.checkLogin();
+  // todo : need to block ui until this returns!?
 });
 
 
 /**
  *  initialise other modules 
  */
-angular.module('library.services', [ 'ngResource' ]);
+angular.module('library.services', []);
 angular.module('library.directives', []);
 angular.module('library.controllers', []);
 angular.module('library.filters', []);

@@ -1,6 +1,6 @@
 angular.module('library.controllers')
 
-.controller('bookDetailCtrl', function($scope, $routeParams, $location, bookService) {
+.controller('bookDetailCtrl', function($scope, $routeParams, $location, $cookies, $timeout, bookService) {
   var id = $routeParams.bookId;
   if (!_.isUndefined(id)) {
     $scope.book = bookService.get({ bookId : id });
@@ -13,10 +13,7 @@ angular.module('library.controllers')
   };
   
   $scope.artworkUrl = function() {
-    if (!_.isUndefined($scope.book.artwork)) {
-      return 'api/artwork/' + $scope.book.artwork;
-    }
-    return '';
+    return 'api/artwork/' + $scope.book.artwork;
   };
 
   $scope.save = function(book) {
@@ -30,7 +27,7 @@ angular.module('library.controllers')
       $location.path('/books');
     });
   };
-
+ 
   $('#input-artwork').bootstrapFileInput();
   $('#input-artwork').fileupload({
     dataType : 'text',
@@ -39,9 +36,15 @@ angular.module('library.controllers')
         $scope.book.artwork = data.result;
       });
     }
-  });
-
+  }).bind('fileuploadsend', function (e, data) {
+	$scope.$apply(function() {
+	  data.headers['X-XSRF-TOKEN'] = $cookies['XSRF-TOKEN'];
+	});
+  }); 
+  
   $('#input-title').focus();
+  
+  
 
 });
 

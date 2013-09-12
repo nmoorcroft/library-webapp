@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -28,6 +30,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class XSRFFilter implements Filter {
+	
+	final Logger logger = LoggerFactory.getLogger(XSRFFilter.class);
 
     public static final String X_XSRF_TOKEN_HEADER = "X-XSRF-TOKEN";
     public static final String XSRF_TOKEN_NAME = "XSRF-TOKEN";
@@ -50,6 +54,7 @@ public class XSRFFilter implements Filter {
         if (!equalsIgnoreCase("GET", request.getMethod()) && !isValidXSRFToken(request)) {
             setXSRFToken(request, response);
             response.sendError(HttpServletResponse.SC_FORBIDDEN);
+            logger.warn("Invalid XSRF-TOKEN found responding with SC_FORBIDDEN");
     		return;
         }
         
@@ -63,8 +68,9 @@ public class XSRFFilter implements Filter {
     }
     
     private boolean isValidXSRFToken(final HttpServletRequest request) {
-        String token = (String) request.getSession().getAttribute(XSRF_TOKEN_NAME);
-        return StringUtils.equals(token, request.getHeader(X_XSRF_TOKEN_HEADER));
+        String sessionToken = (String) request.getSession().getAttribute(XSRF_TOKEN_NAME);
+        String token = (String) request.getHeader(X_XSRF_TOKEN_HEADER);
+        return StringUtils.equals(token, sessionToken);
     }
 
     private void setXSRFToken(final HttpServletRequest request, final HttpServletResponse response) {

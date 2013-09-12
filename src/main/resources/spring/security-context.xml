@@ -20,9 +20,10 @@
     
     <http use-expressions="true" disable-url-rewriting="true" entry-point-ref="ep403">
       <intercept-url pattern="/partials/**" access="permitAll" /> 
+      <intercept-url pattern="/api/logout" access="permitAll" /> 
       <intercept-url pattern="/api/authenticate" access="permitAll" /> 
       <intercept-url pattern="/api/books" access="permitAll" /> 
-      <intercept-url pattern="/api/logout" access="permitAll" /> 
+      <intercept-url pattern="/api/books/*" access="hasRole('ROLE_ADMIN')" /> 
       <intercept-url pattern="/api/artwork/upload" access="hasRole('ROLE_ADMIN')" /> 
     </http>
     

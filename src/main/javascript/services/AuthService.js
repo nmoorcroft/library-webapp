@@ -1,10 +1,28 @@
 angular.module('library.services')
 
-.factory('authService', function($http) {
+/**
+ * Authentication Service for managing login and current user
+ */
+.factory('authService', function($http, $q) {
   var currentUser = null;
   return {
-    login: function(user) { 
-      currentUser = user; 
+    checkLogin : function() {
+      $http.get('api/login').success(function(user) {
+        currentUser = user;
+      });
+    },
+    
+    login: function(user, success, error) {
+      $http.post('api/authenticate', user).success(function(user) {
+        currentUser = user; 
+        success(user);
+        
+      }).error(function(data, status) {
+        if (status == 401) {
+          error();
+        }
+      });
+      
     },
     
     isLoggedIn: function() { 
@@ -19,8 +37,11 @@ angular.module('library.services')
       return this.isLoggedIn() ? currentUser.name : null; 
     },
     
-    logout: function() { 
-      currentUser = null; 
+    logout: function(callback) { 
+      $http.post('api/logout').success(function() {
+        currentUser = null; 
+        callback();
+      });
     }
       
   };

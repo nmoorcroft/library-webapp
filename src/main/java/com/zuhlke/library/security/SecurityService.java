@@ -76,7 +76,12 @@ public class SecurityService {
     }
 
     public User getCurrentUser() {
-    	return (User) getSecurityContext().getAuthentication().getPrincipal();
+    	Object principal = getSecurityContext().getAuthentication().getPrincipal();
+    	if (principal instanceof User) {
+    		return (User) principal;
+    	} else {
+    		return null;
+    	}
     }
     
     public void logout() {

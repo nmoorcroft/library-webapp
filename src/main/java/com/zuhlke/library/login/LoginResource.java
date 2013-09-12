@@ -1,7 +1,5 @@
 package com.zuhlke.library.login;
 
-import java.io.IOException;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +15,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.zuhlke.library.domain.User;
+import com.zuhlke.library.domain.json.Views;
 import com.zuhlke.library.security.AuthenticationException;
 import com.zuhlke.library.security.SecurityService;
 
@@ -35,7 +35,9 @@ public class LoginResource {
 
     @POST
     @Path("/authenticate")
-    @Consumes("application/json") @Produces("application/json")
+    @Consumes("application/json") 
+    @Produces("application/json")
+    @JsonView(Views.Public.class)
     public User authenticate(final LoginForm user, @Context final HttpServletRequest request) {
         try {
             return securityService.authenticate(user.getUsername(), user.getPassword());
@@ -46,11 +48,20 @@ public class LoginResource {
             throw new WebApplicationException(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
-
+    
     @GET
+    @Path("/login")
+    @Produces("application/json")
+    @JsonView(Views.Public.class)
+    public User login() throws Exception {
+    	Thread.sleep(3000);
+        return securityService.getCurrentUser();
+    }
+    
+    @POST
     @Path("/logout")
-    public void logout() throws IOException {
-        securityService.logout();
+    public void logout() {
+    	securityService.logout();
     }
     
 }
