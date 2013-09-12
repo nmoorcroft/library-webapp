@@ -7,9 +7,12 @@ angular.module('library.services')
   var currentUser = null;
   return {
     checkLogin : function() {
+      var deferred = $q.defer();
       $http.get('api/login').success(function(user) {
         currentUser = user;
+        deferred.resolve(currentUser);
       });
+      return deferred.promise;
     },
     
     login: function(user, success, error) {
@@ -46,5 +49,10 @@ angular.module('library.services')
       
   };
 
+})
+
+.factory('checkLogin', function(authService) {
+  return authService.checkLogin();
 });
+
 

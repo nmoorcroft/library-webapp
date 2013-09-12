@@ -1,5 +1,8 @@
 angular.module('libraryApp', [ 'library.services', 'library.controllers', 'library.filters', 'library.directives', 'ngCookies', 'ngResource' ])
 
+/**
+ * Configure routes and controllers
+ */
 .config(function($routeProvider) {
   $routeProvider.when('/login', {
     controller : 'loginCtrl',
@@ -7,15 +10,18 @@ angular.module('libraryApp', [ 'library.services', 'library.controllers', 'libra
 
   }).when('/books', {
     controller : 'bookListCtrl',
-    templateUrl : 'partials/book-list.html'
+    templateUrl : 'partials/book-list.html',
+    resolve : { checkLogin : 'checkLogin' }
 
   }).when('/books/new', {
     controller : 'bookDetailCtrl',
-    templateUrl : 'partials/book-detail.html'
+    templateUrl : 'partials/book-detail.html',
+    resolve : { checkLogin : 'checkLogin' }
 
   }).when('/books/:bookId', {
     controller : 'bookDetailCtrl',
-    templateUrl : 'partials/book-detail.html'
+    templateUrl : 'partials/book-detail.html',
+    resolve : { checkLogin : 'checkLogin' }
 
   }).when('/signup', {
     controller : 'signUpCtrl',
@@ -75,12 +81,6 @@ angular.module('libraryApp', [ 'library.services', 'library.controllers', 'libra
     $httpProvider.responseInterceptors.push(errorInterceptor);
     $httpProvider.responseInterceptors.push(authInterceptor);
 
-})
-
-.run(function(authService) {
-  // user may already have a logged in session
-  authService.checkLogin();
-  // todo : need to block ui until this returns!?
 });
 
 

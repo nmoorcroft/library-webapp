@@ -54,7 +54,6 @@ public class LoginResource {
     @Produces("application/json")
     @JsonView(Views.Public.class)
     public User login() throws Exception {
-    	Thread.sleep(3000);
         return securityService.getCurrentUser();
     }
     
