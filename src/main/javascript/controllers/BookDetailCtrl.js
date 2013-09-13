@@ -9,7 +9,7 @@ angular.module('library.controllers')
   }
 
   $scope.hasArtwork = function() {
-	return $scope.book.artwork != null;  
+    return $scope.book.artwork != null;  
   };
   
   $scope.artworkUrl = function() {
@@ -36,16 +36,16 @@ angular.module('library.controllers')
         $scope.book.artwork = data.result;
       });
     }
+
   }).bind('fileuploadsend', function (e, data) {
-	$scope.$apply(function() {
-	  data.headers['X-XSRF-TOKEN'] = $cookies['XSRF-TOKEN'];
-	});
+  	$scope.$apply(function() {
+  	  data.headers['X-XSRF-TOKEN'] = $cookies['XSRF-TOKEN'];
+  	});
+  
   }); 
   
   $('#input-title').focus();
   
-  
-
 });
 
 

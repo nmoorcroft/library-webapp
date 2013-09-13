@@ -10,7 +10,7 @@ angular.module('library.directives')
         $scope.isAdmin = authService.isAdmin();
       }
       $scope.logout = function() {
-        authService.logout(function() {
+        authService.logout().then(function() {
           $location.path('/books');
           $route.reload();
         });
@@ -19,3 +19,4 @@ angular.module('library.directives')
   };
 
 });
+

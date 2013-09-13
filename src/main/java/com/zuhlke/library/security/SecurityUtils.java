@@ -6,9 +6,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -72,48 +69,5 @@ public class SecurityUtils {
         return StringEscapeUtils.escapeHtml4(input);
     }
     
-    public void killAllCookies(final HttpServletRequest request, final HttpServletResponse response) {
-        Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            killCookie(request, response, cookie.getName());
-        }
-    }
-
-    public void killCookie(final HttpServletRequest request, final HttpServletResponse response, final String name) {
-        String path = "//";
-        String domain = "";
-
-        Cookie cookie = getFirstCookie(request, name);
-        if (cookie != null) {
-            path = cookie.getPath();
-            domain = cookie.getDomain();
-        }
-
-        Cookie deleter = new Cookie(name, "deleted");
-        deleter.setMaxAge(0);
-        if (domain != null) {
-            deleter.setDomain(domain);
-        }
-
-        if (path != null) {
-            deleter.setPath(path);
-        }
-
-        response.addCookie(deleter);
-    }
-
-    private Cookie getFirstCookie(final HttpServletRequest request, final String name) {
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals(name)) {
-                    return cookie;
-                }
-            }
-        }
-        return null;
-    }
-
-
 
 }

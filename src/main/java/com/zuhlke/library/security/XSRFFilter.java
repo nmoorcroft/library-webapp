@@ -74,16 +74,19 @@ public class XSRFFilter implements Filter {
     }
 
     private void setXSRFToken(final HttpServletRequest request, final HttpServletResponse response) {
-    	securityUtils.killCookie(request, response, XSRF_TOKEN_NAME);
+        String sessionToken = (String) request.getSession().getAttribute(XSRF_TOKEN_NAME);
 
-        String token = securityUtils.getRandomString(50);
-        request.getSession().setAttribute(XSRF_TOKEN_NAME, token);
+        if (sessionToken == null) {
+	        String token = securityUtils.getRandomString(50);
+	        request.getSession().setAttribute(XSRF_TOKEN_NAME, token);
+	
+	        Cookie cookie = new Cookie(XSRF_TOKEN_NAME, token);
+	        cookie.setMaxAge(-1);
+	        cookie.setPath(request.getContextPath());
+	
+	        response.addCookie(cookie);
 
-        Cookie cookie = new Cookie(XSRF_TOKEN_NAME, token);
-        cookie.setMaxAge(-1);
-        cookie.setPath("/");
-
-        response.addCookie(cookie);
+        }
         
     }
 

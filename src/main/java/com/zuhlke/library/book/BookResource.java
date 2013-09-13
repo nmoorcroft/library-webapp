@@ -21,10 +21,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.zuhlke.library.domain.Book;
-import com.zuhlke.library.domain.User;
-import com.zuhlke.library.domain.UserRole;
 import com.zuhlke.library.domain.json.Views;
-import com.zuhlke.library.security.SecurityService;
 
 @Component
 @Path("/books")
@@ -35,9 +32,6 @@ public class BookResource {
 	
 	@Inject
 	private BookService bookService;
-	
-	@Inject
-	private SecurityService securityService;
 	
 	@GET 
 	@JsonView(Views.Book.class)

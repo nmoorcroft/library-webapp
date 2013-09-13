@@ -60,7 +60,7 @@ angular.module('libraryApp', [ 'library.services', 'library.controllers', 'libra
     }
 
     /**
-     * Auth Interceptor, redirects to login screen when 403
+     * Auth Interceptor, redirects to home screen when 403
      * returned from server
      */
     function authInterceptor($q, $log, $location) {
@@ -69,7 +69,7 @@ angular.module('libraryApp', [ 'library.services', 'library.controllers', 'libra
         }
         function error(response) {
             if (response.status == 403) {
-                $location.path('/login');
+                $location.path('/books');
             }
             return $q.reject(response);
         }

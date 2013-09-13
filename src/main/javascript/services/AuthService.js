@@ -15,17 +15,19 @@ angular.module('library.services')
       return deferred.promise;
     },
     
-    login: function(user, success, error) {
+    login: function(user) {
+      var deferred = $q.defer();
       $http.post('api/authenticate', user).success(function(user) {
         currentUser = user; 
-        success(user);
+        deferred.resolve(currentUser);
         
       }).error(function(data, status) {
         if (status == 401) {
-          error();
+          deferred.reject();
         }
       });
-      
+      return deferred.promise;
+
     },
     
     isLoggedIn: function() { 
@@ -40,11 +42,13 @@ angular.module('library.services')
       return this.isLoggedIn() ? currentUser.name : null; 
     },
     
-    logout: function(callback) { 
+    logout: function() { 
+      var deferred = $q.defer();
       $http.post('api/logout').success(function() {
         currentUser = null; 
-        callback();
+        deferred.resolve();
       });
+      return deferred.promise;
     }
       
   };
