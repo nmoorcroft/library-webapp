@@ -56,19 +56,11 @@ public class BookResource {
     @POST 
     @Consumes(MediaType.APPLICATION_JSON)
     public void saveBook(Book book) {
-    	User user = securityService.getCurrentUser();
-        if (!user.getRole().equals(UserRole.ADMINISTRATOR)) {
-            throw new WebApplicationException(Response.Status.UNAUTHORIZED);
-        }
         bookService.saveBook(book);
     }
 
     @DELETE @Path("/{id}") 
     public void deleteBook(@PathParam("id") Long id) {
-    	User user = securityService.getCurrentUser();
-        if (!user.getRole().equals(UserRole.ADMINISTRATOR)) {
-            throw new WebApplicationException(Response.Status.UNAUTHORIZED);
-        }
         bookService.deleteBook(id);
     }
 

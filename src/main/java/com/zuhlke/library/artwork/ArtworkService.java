@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ArtworkService {
 
-    @Value("${java.io.tmpdir}")
+    @Value("${img.store}")
     private String imgStore;
 
     public String saveArtwork(byte[] artwork) throws IOException {
