@@ -1,4 +1,4 @@
-angular.module('libraryApp', [ 'library.services', 'library.controllers', 'library.filters', 'library.directives', 'ngCookies', 'ngResource' ])
+angular.module('libraryApp', [ 'library.services', 'library.controllers', 'library.filters', 'library.directives' ])
 
 /**
  * Configure routes and controllers
@@ -87,9 +87,9 @@ angular.module('libraryApp', [ 'library.services', 'library.controllers', 'libra
 /**
  *  initialise other modules 
  */
-angular.module('library.services', []);
+angular.module('library.services', [ 'ngResource' ]);
 angular.module('library.directives', []);
-angular.module('library.controllers', []);
+angular.module('library.controllers', [ 'ngCookies' ]);
 angular.module('library.filters', []);
 
 

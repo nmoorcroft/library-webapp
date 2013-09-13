@@ -15,9 +15,9 @@ angular.module('library.services')
       return deferred.promise;
     },
     
-    login: function(user) {
+    login: function(username, password) {
       var deferred = $q.defer();
-      $http.post('api/authenticate', user).success(function(user) {
+      $http.post('api/authenticate', { username : username, password : password } ).success(function(user) {
         currentUser = user; 
         deferred.resolve(currentUser);
         

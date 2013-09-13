@@ -38,9 +38,9 @@ public class LoginResource {
     @Consumes("application/json") 
     @Produces("application/json")
     @JsonView(Views.Public.class)
-    public User authenticate(final LoginForm user, @Context final HttpServletRequest request) {
+    public User authenticate(final LoginForm loginForm, @Context final HttpServletRequest request) {
         try {
-            return securityService.authenticate(user.getUsername(), user.getPassword());
+            return securityService.authenticate(loginForm.getUsername(), loginForm.getPassword());
             
         } catch (AuthenticationException e) {
         	logger.warn(e.getMessage());

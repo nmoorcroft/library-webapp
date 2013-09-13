@@ -9,9 +9,10 @@ angular.module('library.controllers')
       userService.save(user,
         // success
         function(data) {
-          authService.login(data, data.password).then(function() {
+          authService.login(user.email, user.password).then(function() {
             $location.path('/books');
           });
+          
         },
   
         // error

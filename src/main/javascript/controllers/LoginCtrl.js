@@ -6,7 +6,7 @@ angular.module('library.controllers')
 .controller('loginCtrl', function($scope, $http, $location, $timeout, authService) {
 
   $scope.login = function(user) {
-    authService.login(user).then(function() {
+    authService.login(user.username, user.password).then(function() {
       $location.path('/books');
 
     }, function() {
