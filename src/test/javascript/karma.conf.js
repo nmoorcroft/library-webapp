@@ -18,7 +18,6 @@ module.exports = function(config) {
         'js/angular-1.1.5.min.js', 
         'js/angular-resource-1.1.5.min.js', 
         'js/angular-cookies-1.1.5.min.js', 
-        'js/underscore-min.js', 
         'js/bootstrap.min.js',
         'js/bootstrap.file-input.js', 
         'js/jquery.ui.widget.js',

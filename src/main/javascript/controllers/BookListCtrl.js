@@ -12,7 +12,7 @@ angular.module('library.controllers')
     $scope.books = bookService.query({
       q : query
     }, function() {
-      $scope.showClear = !_.isEmpty(query);
+      $scope.showClear = query.length > 0;
     });
   };
 

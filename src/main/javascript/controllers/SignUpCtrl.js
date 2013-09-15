@@ -6,7 +6,6 @@ angular.module('library.controllers')
       $scope.error = 'Passwords must match';
 
     } else {
-      console.log('saving..');
       userService.save(user,
         // success
         function(data) {

@@ -2,7 +2,7 @@ angular.module('library.controllers')
 
 .controller('bookDetailCtrl', function($scope, $routeParams, $location, $cookies, $timeout, bookService) {
   var id = $routeParams.bookId;
-  if (!_.isUndefined(id)) {
+  if (id !== undefined) {
     $scope.book = bookService.get({ bookId : id });
   } else {
     $scope.book = {};
