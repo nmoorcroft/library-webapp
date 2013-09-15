@@ -26,10 +26,13 @@ module.exports = function(config) {
         'js/jquery.iframe-transport.js', 
 
         // mocks
-        '../../../src/test/javascript/lib/angular-mocks.js',
+        '../../../src/test/javascript/lib/angular-mocks-1.1.5.js',
 
         // application
-        '../../../src/main/javascript/**/*.js',
+        '../../../src/main/javascript/*.js',
+        '../../../src/main/javascript/services/*.js',
+        '../../../src/main/javascript/controllers/*.js',
+        '../../../src/main/javascript/directives/*.js',
 
         // templates
         'partials/*.html',

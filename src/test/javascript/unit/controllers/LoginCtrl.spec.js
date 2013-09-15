@@ -1,36 +1,27 @@
 describe('LoginCtrl', function() {
+  var $rootScope = null;
   var $scope = null;
-  var $httpBackend = null;
   var $controller = null;
-
+  var $q = null;
+  
   beforeEach(module('library.controllers'));
   beforeEach(module('library.services'));
 
-  beforeEach(inject(function($rootScope, _$controller_, _$httpBackend_) {
+  beforeEach(inject(function(_$rootScope_, _$controller_, _$q_) {
+    $rootScope = _$rootScope_;
     $scope = $rootScope.$new();
-    $httpBackend = _$httpBackend_;
     $controller = _$controller_;
+    $q = _$q_;
   }));
-
-  afterEach(function() {
-    $httpBackend.verifyNoOutstandingExpectation();
-    $httpBackend.verifyNoOutstandingRequest();
-  });
 
   it('should login via auth service', inject(function($location, authService) {
 
-    spyOn(authService, 'login');
-    spyOn(authService, 'createAuthHeader').andReturn('Basic xyz==');
+    var deferred = $q.defer();
+    deferred.resolve({ name : 'Me'});
+    spyOn(authService, 'login').andReturn(deferred.promise);
 
     $controller('loginCtrl', {
       $scope : $scope
-    });
-
-    $httpBackend.expectGET('api/authenticate', undefined, function(headers) {
-      return headers['Authorization'] === 'Basic xyz=='; // not working!
-
-    }).respond(200, {
-      name : 'Me'
     });
 
     spyOn($location, 'path');
@@ -40,31 +31,30 @@ describe('LoginCtrl', function() {
       password : 'password'
     });
 
-    $httpBackend.flush();
+    $rootScope.$apply();
 
-    expect(authService.createAuthHeader).toHaveBeenCalledWith('username', 'password');
-    expect(authService.login).toHaveBeenCalledWith({
-      name : 'Me'
-    }, 'password');
+    expect(authService.login).toHaveBeenCalledWith('username', 'password');
     expect($location.path).toHaveBeenCalledWith('/books');
 
   }));
 
-  it('should display error for invalid username/password', inject(function($location) {
+  it('should display error for invalid username/password', inject(function($location, authService) {
 
+    var deferred = $q.defer();
+    deferred.reject();
+    spyOn(authService, 'login').andReturn(deferred.promise);
+    
     $controller('loginCtrl', {
       $scope : $scope,
     });
-
-    $httpBackend.expectGET('api/authenticate').respond(401, undefined);
 
     $scope.login({
       username : 'username',
       password : 'password'
     });
 
-    $httpBackend.flush();
-
+    $rootScope.$apply();
+    
     expect($scope.error).toBe('Invalid username or password.');
 
   }));
