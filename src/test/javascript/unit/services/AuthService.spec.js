@@ -1,12 +1,10 @@
 describe('AuthService', function() {
 
-  var $rootScope = null;
   var $httpBackend = null;
   
   beforeEach(module('library.services'));
 
-  beforeEach(inject(function(_$rootScope_, _$httpBackend_) {
-    $rootScope = _$rootScope_;
+  beforeEach(inject(function(_$httpBackend_) {
     $httpBackend = _$httpBackend_;
   }));
 
@@ -35,7 +33,7 @@ describe('AuthService', function() {
     
   }));
 
-  it('should be logged in', inject(function(authService) {
+  it('should login', inject(function(authService) {
     $httpBackend.expectPOST('api/authenticate').respond({ name : 'Me' });
  
     var currentUser = null;
@@ -53,6 +51,20 @@ describe('AuthService', function() {
     
   }));
 
+  it('should fail login', inject(function(authService) {
+    $httpBackend.expectPOST('api/authenticate').respond(401);
+    
+    var error = false;
+    authService.login('nmo@zuhlke.com', 'password').then(undefined, function() {
+      error = true;
+    });
+    
+    $httpBackend.flush();
+    
+    expect(error).toBe(true);
+        
+  }));
+  
   it('should be logged out', inject(function(authService, $http) {
     $httpBackend.expectPOST('api/logout').respond();
 
@@ -90,5 +102,10 @@ describe('AuthService', function() {
   
   }));
 
+  it('should call checkLogin', inject(function(authService, $injector) {
+    spyOn(authService, 'checkLogin');
+    $injector.get('checkLogin');
+    expect(authService.checkLogin).toHaveBeenCalled();
+  }));
 
 });

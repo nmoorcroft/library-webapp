@@ -59,8 +59,9 @@ module.exports = function(config) {
         reporters : [ 'progress', 'coverage', 'junit' ],
 
         coverageReporter : {
-            type : 'cobertura',
-            dir : '../../../target/karma-coverage/'
+//          type : 'cobertura',
+          type : 'html',
+          dir : '../../../target/karma-coverage/'
         },
 
         junitReporter : {
