@@ -14,27 +14,27 @@ public class UserBuilder {
     public UserBuilder() {
     }
     
-    public UserBuilder id(long id) {
+    public UserBuilder withId(long id) {
         this.id = id;
         return this;
     }
     
-    public UserBuilder email(String email) {
+    public UserBuilder withEmail(String email) {
         this.email = email;
         return this;
     }
     
-    public UserBuilder password(String password) {
+    public UserBuilder withPassword(String password) {
         this.password = password;
         return this;
     }
     
-    public UserBuilder role(UserRole role) {
+    public UserBuilder withRole(UserRole role) {
         this.role = role;
         return this;
     }
     
-    public UserBuilder name(String name) {
+    public UserBuilder withName(String name) {
         this.name = name;
         return this;
     }

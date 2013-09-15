@@ -58,10 +58,10 @@ public class UserRepositoryTest {
     @Test
     public void shouldSaveNewUser() throws Exception {
         final User user = new UserBuilder()
-            .email("xxx@zuhlke.com")
-            .name("Marvin")
-            .password("pwd")
-            .role(UserRole.ADMINISTRATOR)
+            .withEmail("xxx@zuhlke.com")
+            .withName("Marvin")
+            .withPassword("pwd")
+            .withRole(UserRole.ADMINISTRATOR)
             .build();
         
         transactionTemplate.execute(new TransactionCallbackWithoutResult() {

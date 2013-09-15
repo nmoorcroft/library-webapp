@@ -28,7 +28,7 @@ describe('BookDetailCtrl', function() {
 
   it('should configure fileupload control', function() {
     var bootstrapFileInput = spyOn($.fn, 'bootstrapFileInput');
-    var uploadParams;
+    var uploadParams = null;
     var fileupload = spyOn($.fn, 'fileupload').andCallFake(function(params) {
       uploadParams = params;
     });

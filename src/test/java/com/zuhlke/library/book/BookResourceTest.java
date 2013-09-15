@@ -27,12 +27,12 @@ import com.zuhlke.library.domain.BookBuilder;
 public class BookResourceTest {
 
     final List<Book> books = Arrays.asList(
-        new BookBuilder().id(1L).title("book1").build(),
-        new BookBuilder().id(2L).title("book2").build(),
-        new BookBuilder().id(3L).title("book3").build()
+        new BookBuilder().withId(1L).withTitle("book1").build(),
+        new BookBuilder().withId(2L).withTitle("book2").build(),
+        new BookBuilder().withId(3L).withTitle("book3").build()
     );
     
-    final Book book = new BookBuilder().id(1L).title("book title").build();
+    final Book book = new BookBuilder().withId(1L).withTitle("book title").build();
 
     @Mock BookService mockBookService;
     @InjectMocks BookResource resource = new BookResource();
@@ -65,41 +65,9 @@ public class BookResourceTest {
     }
     
     @Test
-    public void shouldNotBeAuthorizedToSave() throws Exception {
-        WebApplicationException exception = null;
-        try {
-            resource.saveBook(book);
-
-        } catch (WebApplicationException e) {
-            exception = e;
-        }
-        
-        verify(mockBookService, never()).saveBook(book);
-        assertNotNull(exception);
-        assertEquals(exception.getResponse().getStatus(), 401);
-    
-    }
-    
-    @Test
     public void shouldDeleteBook() throws Exception {
         resource.deleteBook(1L);
         verify(mockBookService).deleteBook(1L);
-    }
-    
-    @Test
-    public void shouldNotBeAuthorizedToDelete() throws Exception {
-        WebApplicationException exception = null;
-        try {
-            resource.deleteBook(1L);
-
-        } catch (WebApplicationException e) {
-            exception = e;
-        }
-        
-        verify(mockBookService, never()).deleteBook(1L);
-        assertNotNull(exception);
-        assertEquals(exception.getResponse().getStatus(), 401);
-    
     }
     
 

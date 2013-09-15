@@ -12,22 +12,22 @@ public class BookBuilder {
     public BookBuilder() {
     }
     
-    public BookBuilder id(long id) {
+    public BookBuilder withId(long id) {
         this.id = id;
         return this;
     }
     
-    public BookBuilder title(String title) {
+    public BookBuilder withTitle(String title) {
         this.title = title;
         return this;
     }
     
-    public BookBuilder description(String description) {
+    public BookBuilder withDescription(String description) {
         this.description = description;
         return this;
     }
     
-    public BookBuilder author(String author) {
+    public BookBuilder withAuthor(String author) {
         this.author = author;
         return this;
     }

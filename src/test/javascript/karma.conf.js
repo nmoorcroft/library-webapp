@@ -48,7 +48,6 @@ module.exports = function(config) {
         ],
 
         preprocessors : {
-            //'js/*.js' : 'coverage',
             '../../../src/main/javascript/**/*.js' : 'coverage',
             'partials/*.html' : [ 'html2js' ]
         },

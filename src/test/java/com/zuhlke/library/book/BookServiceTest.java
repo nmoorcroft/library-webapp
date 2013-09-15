@@ -39,14 +39,14 @@ public class BookServiceTest {
     
     @Test
     public void shouldSaveBook() throws Exception {
-        Book book = new BookBuilder().id(1L).build();
+        Book book = new BookBuilder().withId(1L).build();
         bookService.saveBook(book);
         verify(mockRepository).save(book);
     }
     
     @Test
     public void shouldDeleteBook() throws Exception {
-        Book book = new BookBuilder().id(2L).build();
+        Book book = new BookBuilder().withId(2L).build();
         when(mockRepository.findOne(2L)).thenReturn(book);
         bookService.deleteBook(2L);
         verify(mockRepository).delete(book);

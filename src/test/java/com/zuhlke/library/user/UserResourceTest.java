@@ -19,7 +19,7 @@ public class UserResourceTest {
     
     @Test
     public void shouldCreateUser() throws Exception {
-        User user = new UserBuilder().name("Marvin").build();
+        User user = new UserBuilder().withName("Marvin").build();
         userResource.createUser(user);
         verify(mockUserService).createUser(user);
     }
