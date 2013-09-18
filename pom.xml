@@ -8,6 +8,7 @@
 
   <properties>
     <wro4j.minimize>false</wro4j.minimize>
+    
     <!-- dependency versions -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <hibernate.version>4.2.3.Final</hibernate.version>
@@ -294,7 +295,6 @@
         <configuration>
           <changeLogFile>${basedir}/src/database/migrations.xml</changeLogFile>
           <propertyFile>${basedir}/src/database/liquibase.properties</propertyFile>
-          <url>jdbc:mysql://localhost:3306/library</url>
         </configuration>
       </plugin>
 

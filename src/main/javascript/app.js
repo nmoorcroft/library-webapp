@@ -1,4 +1,4 @@
-angular.module('libraryApp', [ 'library.services', 'library.controllers', 'library.filters', 'library.directives' ])
+angular.module('library.app', [ 'library.services', 'library.controllers', 'library.filters', 'library.directives' ])
 
 /**
  * Configure routes and controllers

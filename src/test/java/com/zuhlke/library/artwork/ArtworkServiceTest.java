@@ -18,6 +18,8 @@ public class ArtworkServiceTest {
     
     @Test
     public void shouldSaveAndLoadArtwork() throws Exception {
+    	artworkService.imgStore = "target";
+    	
         byte[] artwork = toByteArray(getClass().getResourceAsStream("/img/domain.jpg"));
         String uuid = artworkService.saveArtwork(artwork);
         byte[] loaded = artworkService.loadArtwork(uuid);

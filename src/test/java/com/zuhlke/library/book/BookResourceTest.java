@@ -1,18 +1,13 @@
 package com.zuhlke.library.book;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.List;
-
-import javax.ws.rs.WebApplicationException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

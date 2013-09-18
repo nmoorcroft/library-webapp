@@ -18,7 +18,7 @@ public class ArtworkService {
     private final Logger logger = LoggerFactory.getLogger(ArtworkService.class);
     
     @Value("${img.store}")
-    private String imgStore;
+    protected String imgStore;
 
     public String saveArtwork(byte[] artwork) throws IOException {
         String uuid = UUID.randomUUID().toString();

@@ -50,8 +50,8 @@ module.exports = function(config) {
         ],
 
         preprocessors : {
-            '../../../src/main/javascript/**/*.js' : 'coverage',
-            'partials/*.html' : [ 'html2js' ]
+            '../../../src/main/javascript/**/*.js' : 'coverage', // code covergae preprocessor
+            'partials/*.html' : [ 'html2js' ] // convert partials to JavaScript for directive testing
         },
 
         // test results reporter to use
@@ -59,13 +59,17 @@ module.exports = function(config) {
         reporters : [ 'progress', 'coverage', 'junit' ],
 
         coverageReporter : {
-//          type : 'cobertura',
-          type : 'html',
-          dir : '../../../target/karma-coverage/'
+          type : 'text-summary',
+          dir : '../../../target/karma/coverage/'
         },
 
+//      coverageReporter : {
+//        type : 'cobertura',
+//        dir : '../../../target/karma/coverage/'
+//      },
+        
         junitReporter : {
-            outputFile : '../../../target/karma-test-results.xml'
+            outputFile : '../../../target/karma/TEST-javascript.xml'
         },
 
         // web server port
@@ -99,8 +103,6 @@ module.exports = function(config) {
         // Continuous Integration mode
         // if true, it capture browsers, run tests and exit
         singleRun : false,
-
-    // transports : ['flashsocket', 'xhr-polling', 'jsonp-polling']
 
     });
 };

@@ -2,7 +2,7 @@ describe('app', function() {
   
   var $httpBackend = null;
 
-  beforeEach(module('libraryApp'));
+  beforeEach(module('library.app'));
 
   beforeEach(inject(function(_$httpBackend_) {
     $httpBackend = _$httpBackend_;
