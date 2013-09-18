@@ -47,7 +47,7 @@ angular.module('libraryApp', [ 'library.services', 'library.controllers', 'libra
             return response;
         }
         function error(response) {
-            if (_.contains([ 400, 420, 404, 415, 500 ], response.status)) {
+            if ($.inArray(response.status, [ 400, 420, 404, 415, 500 ])) {
                 $('#system-error-dialog').modal().on('hidden.bs.modal', function() {
                     window.location = '#/books';
                 });
