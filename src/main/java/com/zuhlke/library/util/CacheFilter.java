@@ -15,8 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * A filter for setting no-cache, must-revalidate cache headers on the
- * {@code /api/} requests.
+ * A to prevent caching of {@code /api/} requests.
+ * 
  */
 @Component
 public class CacheFilter implements Filter {

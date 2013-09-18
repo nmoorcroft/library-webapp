@@ -1,9 +1,8 @@
 package com.zuhlke.library.security;
 
 /**
- * Thrown if the authentication of the user failed.
- * <p>
- * This might be happening if the user supplied the wrong password or username.
+ * Thrown if user authentication fails.
+ * 
  */
 public class AuthenticationException extends RuntimeException {
 

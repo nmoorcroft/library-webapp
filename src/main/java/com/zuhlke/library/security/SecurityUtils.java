@@ -9,7 +9,6 @@ import javax.annotation.PostConstruct;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -22,11 +21,14 @@ public class SecurityUtils {
     private static final String RANDOM_ALGORITHM = "SHA1PRNG";
     
     private SecureRandom secureRandom = null;
+    private MessageDigest digest = null;
 
     @PostConstruct
     public void init() {
         try {
             secureRandom = SecureRandom.getInstance(RANDOM_ALGORITHM);
+            digest =  MessageDigest.getInstance(HASH_ALGORITHM);
+            
         } catch (NoSuchAlgorithmException e) {
             throw new SecurityException(e.getMessage(), e);
         }
@@ -40,7 +42,6 @@ public class SecurityUtils {
         byte[] bytes = null;
 
         try {
-            MessageDigest digest = MessageDigest.getInstance(HASH_ALGORITHM);
             digest.reset();
             digest.update(MASTER_SALT.getBytes("UTF-8"));
             digest.update(salt.getBytes(ENCODING));
@@ -54,20 +55,14 @@ public class SecurityUtils {
 
             return Base64.encodeBase64String(bytes);
             
-        } catch (NoSuchAlgorithmException e) {
-            throw new SecurityException(e.getMessage(), e);
         } catch (UnsupportedEncodingException e) {
             throw new SecurityException(e.getMessage(), e);
         }
     }
 
-    public String getRandomString(final int length) {
+    public String generateRandomString(final int length) {
         return RandomStringUtils.random(length, 0, 0, true, true, null, secureRandom);
     }
 
-    public String escapeHtml(final String input) {
-        return StringEscapeUtils.escapeHtml4(input);
-    }
-    
 
 }

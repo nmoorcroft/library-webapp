@@ -59,11 +59,6 @@ public class Book implements Serializable {
 	
 	Book() { }
 	
-	public Book(String title, String author) {
-		this.title = title;
-		this.author = author;
-	}
-
 	public Long getId() {
 		return id;
 	}

@@ -1,6 +1,7 @@
 package com.zuhlke.library.security;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class SecurityUtilsTest {
@@ -10,7 +11,7 @@ public class SecurityUtilsTest {
 	@Test
 	public void shouldHashPassword() throws Exception {
 		String hash = securityUtils.hash("password", "admin@zuhlke.com");
-		Assert.assertEquals("7Le61jX4m+a+1TNd/ltaD7ee+jyqsgYV0Mfd0EYS18RqxBX+9YfVbkXZRd9/VdZAJ7l/SDcQn03NicBe5vnj8A==", hash);
+		assertEquals("7Le61jX4m+a+1TNd/ltaD7ee+jyqsgYV0Mfd0EYS18RqxBX+9YfVbkXZRd9/VdZAJ7l/SDcQn03NicBe5vnj8A==", hash);
 	}
 	
 }

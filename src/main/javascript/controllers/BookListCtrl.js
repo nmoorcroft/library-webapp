@@ -1,6 +1,7 @@
 angular.module('library.controllers')
 
 .controller('bookListCtrl', function($scope, $location, bookService, authService) {
+  
   $scope.books = bookService.query();
   $scope.query = '';
 
@@ -30,4 +31,5 @@ angular.module('library.controllers')
   $scope.canEdit = authService.isAdmin();
   
 });
+
 

@@ -4,6 +4,7 @@ import static org.apache.commons.io.FileUtils.readFileToByteArray;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
@@ -28,8 +29,9 @@ public class ArtworkService {
         return uuid;
     }
     
-    public byte[] loadArtwork(String uuid) throws IOException {
-        return readFileToByteArray(new File(imgStore, uuid));
+    public ArtworkAdapter loadArtwork(String uuid) throws IOException {
+        File file = new File(imgStore, uuid);
+        return new ArtworkAdapter(readFileToByteArray(file), new Date(file.lastModified()));
     }
     
 }

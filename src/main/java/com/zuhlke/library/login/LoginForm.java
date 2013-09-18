@@ -1,8 +1,5 @@
 package com.zuhlke.library.login;
 
-/**
- * This transfers the username and password from the login form to the backend.
- */
 public class LoginForm {
 
     private String username;

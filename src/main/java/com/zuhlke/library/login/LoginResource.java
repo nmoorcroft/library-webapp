@@ -21,14 +21,10 @@ import com.zuhlke.library.domain.json.Views;
 import com.zuhlke.library.security.AuthenticationException;
 import com.zuhlke.library.security.SecurityService;
 
-/**
- * Responsible for accepting the User username and plaintext password and
- * tries to authenticate them.
- */
 @Component
 public class LoginResource {
 
-    Logger logger = LoggerFactory.getLogger(LoginResource.class);
+    final Logger logger = LoggerFactory.getLogger(LoginResource.class);
 
     @Inject
     private SecurityService securityService;
@@ -47,14 +43,15 @@ public class LoginResource {
             securityService.logout();
             throw new WebApplicationException(HttpServletResponse.SC_UNAUTHORIZED);
         }
+        
     }
     
     @GET
-    @Path("/login")
+    @Path("/checklogin")
     @Produces("application/json")
     @JsonView(Views.Public.class)
-    public User login() throws Exception {
-        return securityService.getCurrentUser();
+    public User checkLogin() throws Exception {
+        return securityService.getCurrentUser().orNull();
     }
     
     @POST

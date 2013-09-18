@@ -8,7 +8,7 @@ angular.module('library.services')
   return {
     checkLogin : function() {
       var deferred = $q.defer();
-      $http.get('api/login').success(function(user) {
+      $http.get('api/checklogin').success(function(user) {
         currentUser = user;
         deferred.resolve(currentUser);
       });

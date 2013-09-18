@@ -26,9 +26,6 @@ import com.google.common.base.Objects;
 @Entity @Table(name = "comment") @Cacheable
 public class Comment implements Serializable {
     
-    /**
-     * 
-     */
     private static final long serialVersionUID = -405137319657522846L;
     
     @Id 
@@ -59,12 +56,6 @@ public class Comment implements Serializable {
     
     Comment() { }
     
-    public Comment(String comment, User user, Book book) {
-        this.comment = comment;
-        this.user = user;
-        this.book = book;
-    }
-
     public Long getId() {
         return id;
     }
@@ -105,12 +96,9 @@ public class Comment implements Serializable {
         this.book = book;
     }
     
-    
     @Override
     public String toString() {
         return Objects.toStringHelper(this).toString();
     }
     
-    
-
 }

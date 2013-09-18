@@ -39,13 +39,6 @@ public class XSRFFilter implements Filter {
     @Inject
     private SecurityUtils securityUtils;
     
-    public XSRFFilter() {
-    }
-
-    @Override
-    public void init(final FilterConfig config) throws ServletException {
-    }
-
     @Override
     public void doFilter(final ServletRequest req, final ServletResponse resp, final FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
@@ -63,10 +56,6 @@ public class XSRFFilter implements Filter {
         chain.doFilter(request, response);
     }
     
-    @Override
-    public void destroy() {
-    }
-    
     private boolean isValidXSRFToken(final HttpServletRequest request) {
         String sessionToken = (String) request.getSession().getAttribute(XSRF_TOKEN_NAME);
         String token = (String) request.getHeader(X_XSRF_TOKEN_HEADER);
@@ -77,7 +66,7 @@ public class XSRFFilter implements Filter {
         String sessionToken = (String) request.getSession().getAttribute(XSRF_TOKEN_NAME);
 
         if (sessionToken == null) {
-	        String token = securityUtils.getRandomString(50);
+	        String token = securityUtils.generateRandomString(50);
 	        request.getSession().setAttribute(XSRF_TOKEN_NAME, token);
 	
 	        Cookie cookie = new Cookie(XSRF_TOKEN_NAME, token);
@@ -88,6 +77,14 @@ public class XSRFFilter implements Filter {
 
         }
         
+    }
+
+    @Override
+    public void init(final FilterConfig config) throws ServletException {
+    }
+
+    @Override
+    public void destroy() {
     }
 
 

@@ -1,12 +1,14 @@
 package com.zuhlke.library.artwork;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.activation.DataHandler;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -32,9 +34,15 @@ public class ArtworkResource {
     private ArtworkService artworkService;
 
     @GET @Path("/{filename}") @Produces("image/jpg")
-    public Response getArtwork(@PathParam("filename") String filename) {
+    public Response getArtwork(@PathParam("filename") String filename, @HeaderParam("If-Modified-Since") Date ims) {
         try {
-            return Response.ok(artworkService.loadArtwork(filename)).build();
+        	ArtworkAdapter artwork = artworkService.loadArtwork(filename);
+        	long lastModified = artwork.getLastModified().getTime() / 1000 * 1000; 
+        	if (ims != null && lastModified <= ims.getTime()) {
+        		return Response.notModified().build();
+        	}
+    		return Response.ok(artwork.getData()).lastModified(artwork.getLastModified()).build();
+        	
         } catch (IOException e) {
             logger.warn(e.getMessage());
             throw new WebApplicationException(Response.Status.NOT_FOUND);

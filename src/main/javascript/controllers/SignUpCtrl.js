@@ -1,6 +1,7 @@
 angular.module('library.controllers')
 
 .controller('signUpCtrl', function($scope, $location, userService, authService) {
+  
   $scope.signup = function(user) {
     if (user.password != user.confirm) {
       $scope.error = 'Passwords must match';

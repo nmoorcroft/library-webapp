@@ -1,8 +1,5 @@
 angular.module('library.controllers')
 
-/**
- * Controller for loging screen 
- */
 .controller('loginCtrl', function($scope, $http, $location, $timeout, authService) {
 
   $scope.login = function(user) {

@@ -20,9 +20,9 @@ public class ArtworkServiceTest {
     public void shouldSaveAndLoadArtwork() throws Exception {
     	artworkService.imgStore = "target";
     	
-        byte[] artwork = toByteArray(getClass().getResourceAsStream("/img/domain.jpg"));
+        byte[] artwork = toByteArray(getClass().getResourceAsStream("/img/extreme.jpg"));
         String uuid = artworkService.saveArtwork(artwork);
-        byte[] loaded = artworkService.loadArtwork(uuid);
+        byte[] loaded = artworkService.loadArtwork(uuid).getData();
         
         assertArrayEquals(artwork, loaded);
         
