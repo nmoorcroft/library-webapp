@@ -19,7 +19,7 @@ describe('AuthService', function() {
   }));
   
   it('should check login', inject(function(authService) {
-    $httpBackend.expectGET('api/login').respond({ name : 'Me' });
+    $httpBackend.expectGET('api/checklogin').respond({ name : 'Me' });
     
     var currentUser = null;
     authService.checkLogin().then(function(user) {

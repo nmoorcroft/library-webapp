@@ -61,6 +61,46 @@ describe('BookListCtrl', function() {
 
   });
 
+  it('should search for books using query', function() {
+
+    var mockAuthService = {
+      isAdmin : function() {
+        return false;
+      }
+    };
+
+    $controller('bookListCtrl', {
+      $scope : $scope,
+      authService : mockAuthService
+    });
+
+    $httpBackend.expectGET('api/books?q=query').respond(books);
+
+    $scope.query = 'query';
+    $scope.search($scope.query);
+
+    $httpBackend.flush();
+
+    expect($scope.showClear).toBe(true);
+
+  });
+
+  it('should hide the clear button for an empty search', function() {
+
+    $controller('bookListCtrl', {
+      $scope : $scope
+    });
+
+    $httpBackend.expectGET('api/books?q=').respond(books);
+
+    $scope.search('');
+
+    $httpBackend.flush();
+
+    expect($scope.showClear).toBe(false);
+
+  });
+
   it('should show edit button for admin', function() {
     var mockauthService = {
       isAdmin : function() {
@@ -78,50 +118,6 @@ describe('BookListCtrl', function() {
     $httpBackend.flush();
 
     expect($scope.canEdit).toBe(true);
-
-  });
-
-  it('should search for books using query', function() {
-
-    var mockauthService = {
-      isAdmin : function() {
-        return false;
-      }
-    };
-
-    $controller('bookListCtrl', {
-      $scope : $scope,
-      authService : mockauthService
-    });
-
-    $httpBackend.expectGET('api/books?q=query').respond(books);
-
-    $scope.query = 'query';
-    $scope.search($scope.query);
-
-    $httpBackend.flush();
-
-    expect($scope.showClear).toBe(true);
-
-    $scope.query = '';
-    $scope.$apply('query');
-    expect($scope.showClear).toBe(false);
-
-  });
-
-  it('should hide the clear button for an empty search', function() {
-
-    $controller('bookListCtrl', {
-      $scope : $scope
-    });
-
-    $httpBackend.expectGET('api/books?q=').respond(books);
-
-    $scope.search('');
-
-    $httpBackend.flush();
-
-    expect($scope.showClear).toBe(false);
 
   });
 

@@ -1,7 +1,6 @@
 package com.zuhlke.library.login;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -9,7 +8,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,10 +30,10 @@ public class LoginResource {
 
     @POST
     @Path("/authenticate")
-    @Consumes("application/json") 
-    @Produces("application/json")
+    @Consumes(MediaType.APPLICATION_JSON) 
+    @Produces(MediaType.APPLICATION_JSON)
     @JsonView(Views.Public.class)
-    public User authenticate(final LoginForm loginForm, @Context final HttpServletRequest request) {
+    public User authenticate(final LoginForm loginForm) {
         try {
             return securityService.authenticate(loginForm.getUsername(), loginForm.getPassword());
             
@@ -48,7 +47,7 @@ public class LoginResource {
     
     @GET
     @Path("/checklogin")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     @JsonView(Views.Public.class)
     public User checkLogin() throws Exception {
         return securityService.getCurrentUser().orNull();
