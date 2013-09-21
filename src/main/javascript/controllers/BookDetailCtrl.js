@@ -1,6 +1,6 @@
 angular.module('library.controllers')
 
-.controller('bookDetailCtrl', function($scope, $routeParams, $location, $cookies, $timeout, bookService) {
+.controller('bookDetailCtrl', function($scope, $routeParams, $location, $cookies, bookService) {
 
   var id = $routeParams.bookId;
 

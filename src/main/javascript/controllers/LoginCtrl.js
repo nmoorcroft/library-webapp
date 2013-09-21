@@ -1,6 +1,6 @@
 angular.module('library.controllers')
 
-.controller('loginCtrl', function($scope, $http, $location, $timeout, authService) {
+.controller('loginCtrl', function($scope, $location, authService) {
 
   $scope.login = function(user) {
     authService.login(user.username, user.password).then(function() {

@@ -1,23 +1,23 @@
 describe('Navbar directive', function() {
 
   var element = null;
-  var $rootScope = null;
+  var $scope = null;
 
   beforeEach(module('partials/navbar.html'));
   beforeEach(module('library.services'));
   beforeEach(module('library.directives'));
 
-  beforeEach(inject(function(_$rootScope_) {
+  beforeEach(inject(function($rootScope) {
     element = angular.element('<div data-navbar></div>');
-    $rootScope = _$rootScope_;
+    $scope = $rootScope;
   }));
 
   it('should create navbar not logged in', inject(function($compile, authService) {
 
     spyOn(authService, 'isLoggedIn').andReturn(false);
 
-    $compile(element)($rootScope);
-    $rootScope.$digest();
+    $compile(element)($scope);
+    $scope.$digest();
 
     expect(element.find('span.logged-in').css('display')).toBe('none');
     expect(element.find('span.not-logged-in').css('display')).not.toBe('none');
@@ -30,8 +30,8 @@ describe('Navbar directive', function() {
     spyOn(authService, 'getFullName').andReturn('Zaphod');
     spyOn(authService, 'isAdmin').andReturn(false);
 
-    $compile(element)($rootScope);
-    $rootScope.$digest();
+    $compile(element)($scope);
+    $scope.$digest();
 
     expect(element.find('span.logged-in').css('display')).not.toBe('none');
     expect(element.find('span.not-logged-in').css('display')).toBe('none');
@@ -46,8 +46,8 @@ describe('Navbar directive', function() {
     spyOn(authService, 'getFullName').andReturn('Zaphod');
     spyOn(authService, 'isAdmin').andReturn(true);
 
-    $compile(element)($rootScope);
-    $rootScope.$digest();
+    $compile(element)($scope);
+    $scope.$digest();
 
     expect(element.find('span.logged-in .createBook').css('display')).not.toBe('none');
 
@@ -67,17 +67,17 @@ describe('Navbar directive', function() {
     spyOn($location, 'path');
     spyOn($route, 'reload');
 
-    $compile(element)($rootScope);
-    $rootScope.$digest();
+    $compile(element)($scope);
+    $scope.$digest();
     
-    expect($rootScope.logout).toBeDefined();
+    expect($scope.logout).toBeDefined();
 
-    $rootScope.logout();
+    $scope.logout();
 
     expect(authService.logout).toHaveBeenCalled();
 
     // promises are resolved/dispatched only on next $digest cycle
-    $rootScope.$apply();
+    $scope.$apply();
 
     expect($location.path).toHaveBeenCalledWith('/books');
     expect($route.reload).toHaveBeenCalled();

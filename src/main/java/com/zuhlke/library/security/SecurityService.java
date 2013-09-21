@@ -37,7 +37,7 @@ public class SecurityService {
     private UserRepository userRepository;
 
     @Transactional(readOnly = true)
-    public User authenticate(final String username, final String password) {
+    public User authenticate(final String username, final String password) throws AuthenticationException {
         if (StringUtils.isBlank(username)) {
             throw new AuthenticationException("Attempt to login user with null username");
         }

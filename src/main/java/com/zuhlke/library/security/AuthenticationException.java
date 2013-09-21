@@ -4,7 +4,7 @@ package com.zuhlke.library.security;
  * Thrown if user authentication fails.
  * 
  */
-public class AuthenticationException extends RuntimeException {
+public class AuthenticationException extends Exception {
 
     private static final long serialVersionUID = -4196097265945547037L;
 

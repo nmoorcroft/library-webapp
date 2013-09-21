@@ -1,6 +1,6 @@
 angular.module('library.controllers')
 
-.controller('bookListCtrl', function($scope, $location, bookService, authService) {
+.controller('bookListCtrl', function($scope, bookService, authService) {
   
   $scope.books = bookService.query();
   $scope.query = '';
