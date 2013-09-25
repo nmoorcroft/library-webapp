@@ -36,7 +36,7 @@ describe('BookListCtrl', function() {
 
   it('should load all books when started', function() {
 
-    var mockUserService = {
+    var mockAuthService = {
       isAdmin : function() {
         return false;
       }
@@ -46,7 +46,7 @@ describe('BookListCtrl', function() {
 
     $controller('bookListCtrl', {
       $scope : $scope,
-      userService : mockUserService
+      authService : mockAuthService
     });
 
     expect($scope.search).toBeDefined();
