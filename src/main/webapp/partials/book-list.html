@@ -4,7 +4,7 @@
   <form id="search-form" data-ng-submit="search(query)">
     <div class="form-group">
       <div class="input-group">
-       <input type="text" class="form-control" id="search-input" placeholder="Search by title or author" data-ng-model="query" />
+       <input type="text" data-ng-model="query" class="form-control" placeholder="Search by title or author" />
        <span class="search-icon input-group-addon" data-ng-click="searchIcon()">
          <i class="glyphicon glyphicon-search" data-ng-show="!showClear"></i>
          <i class="glyphicon glyphicon-remove" data-ng-show="showClear"></i>
@@ -13,6 +13,7 @@
     </div>
   </form>
 </div>
+
 <div class="row">
   <div id="book-listing" class="col-12">
     <div data-ng-repeat="book in books" class="book-item">

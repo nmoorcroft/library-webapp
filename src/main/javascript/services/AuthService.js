@@ -2,6 +2,7 @@ angular.module('library.services')
 
 /**
  * Authentication Service for managing login and current user
+ * 
  */
 .factory('authService', function($http, $q) {
   var currentUser = null;
@@ -17,15 +18,18 @@ angular.module('library.services')
     
     login: function(username, password) {
       var deferred = $q.defer();
-      $http.post('api/authenticate', { username : username, password : password } ).success(function(user) {
+      $http.post('api/authenticate', { username : username, password : password } )
+      .success(function(user) {
         currentUser = user; 
         deferred.resolve(currentUser);
         
-      }).error(function(data, status) {
+      })
+      .error(function(data, status) {
         if (status == 401) {
           deferred.reject();
         }
       });
+      
       return deferred.promise;
 
     },

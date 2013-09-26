@@ -18,7 +18,7 @@ angular.module('library.controllers')
   
         // error
         function(response) {
-          if (response.status == 409) {
+          if (response.status == 409) { // Conflict
             $scope.error = 'This email address has already been registered, please use another.';
           }
         

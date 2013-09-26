@@ -8,7 +8,7 @@ public class DuplicateEmailException extends WebApplicationException {
     private static final long serialVersionUID = 1138636058845011872L;
 
     public DuplicateEmailException() {
-        super(Response.status(Response.Status.CONFLICT).entity("DuplicateEmailException").build());
+        super(Response.status(Response.Status.CONFLICT).entity("Duplicate Email").build());
     }
     
 }
