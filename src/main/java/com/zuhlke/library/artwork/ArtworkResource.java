@@ -33,7 +33,8 @@ public class ArtworkResource {
     @Inject
     private ArtworkService artworkService;
 
-    @GET @Path("/{filename}") @Produces("image/jpg")
+    @GET @Path("/{filename}") 
+    @Produces("image/jpg") // todo : add support for other image types
     public Response getArtwork(@PathParam("filename") String filename, @HeaderParam("If-Modified-Since") Date ims) {
         try {
         	ArtworkAdapter artwork = artworkService.loadArtwork(filename);

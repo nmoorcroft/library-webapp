@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * A to prevent caching of {@code /api/} requests.
+ * Prevents caching of {@code /api/} requests.
  * 
  */
 @Component

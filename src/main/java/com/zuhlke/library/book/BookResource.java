@@ -25,7 +25,6 @@ import com.zuhlke.library.domain.json.Views;
 
 @Component
 @Path("/books")
-@Produces(MediaType.APPLICATION_JSON)
 public class BookResource {
 
 	final Logger logger = LoggerFactory.getLogger(BookResource.class);
@@ -34,13 +33,13 @@ public class BookResource {
 	private BookService bookService;
 	
 	@GET 
-	@JsonView(Views.Book.class)
+	@Produces(MediaType.APPLICATION_JSON) @JsonView(Views.Book.class)
 	public List<Book> getBooks(@QueryParam("q") String query) {
 	    return bookService.findBooks(query);
 	}
 	
 	@GET @Path("/{id}") 
-    @JsonView(Views.Book.class)
+	@Produces(MediaType.APPLICATION_JSON) @JsonView(Views.Book.class)
     public Book getBook(@PathParam("id") Long id) {
         Book book = bookService.getBook(id);
         if (book != null) return book;

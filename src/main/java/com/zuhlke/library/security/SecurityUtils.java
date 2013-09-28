@@ -55,9 +55,11 @@ public class SecurityUtils {
 
             return Base64.encodeBase64String(bytes);
             
+            
         } catch (UnsupportedEncodingException e) {
             throw new SecurityException(e.getMessage(), e);
         }
+        
     }
 
     public String generateRandomString(final int length) {
