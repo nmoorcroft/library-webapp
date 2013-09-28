@@ -13,7 +13,7 @@ npm install -g karma-junit-reporter
 npm install -g karma-ng-html2js-preprocessor
 ```
 
-For Karma to be able to launch PhantomJS, set PHANTOMJS_BIN to the install location
+For Karma to be able to launch PhantomJS, set PHANTOMJS_BIN to it's install location
 
 ```
 export PHANTOMJS_BIN=/usr/local/bin/phantomjs
@@ -27,7 +27,7 @@ The demo webapp can be built using maven
 mvn clean package
 ```
 
-Once built, the webapp can be deployed to a default Apache Tomcat 7 install
+Once built, the webapp can be deployed to a default Apache Tomcat 7 install (http://tomcat.apache.org/download-70.cgi)
 
 ### Database config
 
