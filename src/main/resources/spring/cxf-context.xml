@@ -17,7 +17,7 @@
   <jaxrs:server id="libraryWebapp" address="/">
     <jaxrs:serviceBeans>
 
-      <!-- ADD ALL YOUR RESOURCES HERE -->
+      <!-- ADD ALL RESOURCES HERE -->
       <ref bean="loginResource" />
       <ref bean="artworkResource" />
       <ref bean="bookResource" />

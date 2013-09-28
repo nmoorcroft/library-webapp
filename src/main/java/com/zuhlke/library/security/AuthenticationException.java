@@ -1,7 +1,7 @@
 package com.zuhlke.library.security;
 
 /**
- * Thrown if user authentication fails.
+ * Thrown on authentication failure
  * 
  */
 public class AuthenticationException extends Exception {

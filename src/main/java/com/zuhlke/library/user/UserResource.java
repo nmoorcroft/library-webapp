@@ -17,7 +17,8 @@ public class UserResource {
     @Inject
     private UserService userService;
     
-    @POST @Consumes(MediaType.APPLICATION_JSON)
+    @POST 
+    @Consumes(MediaType.APPLICATION_JSON)
     public void createUser(User user) {
         userService.createUser(user);
     }

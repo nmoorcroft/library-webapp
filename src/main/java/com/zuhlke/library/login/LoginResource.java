@@ -28,11 +28,9 @@ public class LoginResource {
     @Inject
     private SecurityService securityService;
 
-    @POST
-    @Path("/authenticate")
+    @POST @Path("/authenticate")
     @Consumes(MediaType.APPLICATION_JSON) 
-    @Produces(MediaType.APPLICATION_JSON)
-    @JsonView(Views.Public.class)
+    @Produces(MediaType.APPLICATION_JSON) @JsonView(Views.Public.class)
     public User authenticate(final LoginForm loginForm) {
         try {
             return securityService.authenticate(loginForm.getUsername(), loginForm.getPassword());
@@ -45,16 +43,13 @@ public class LoginResource {
         
     }
     
-    @GET
-    @Path("/checklogin")
-    @Produces(MediaType.APPLICATION_JSON)
-    @JsonView(Views.Public.class)
+    @GET @Path("/checklogin")
+    @Produces(MediaType.APPLICATION_JSON) @JsonView(Views.Public.class)
     public User checkLogin() throws Exception {
         return securityService.getCurrentUser().orNull();
     }
     
-    @POST
-    @Path("/logout")
+    @POST @Path("/logout")
     public void logout() {
     	securityService.logout();
     }
