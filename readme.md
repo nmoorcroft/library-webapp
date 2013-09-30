@@ -67,4 +67,12 @@ To deploy within eclipse using m2e and wtp you will need the m2e connector for w
 http://download.jboss.org/jbosstools/updates/m2e-wro4j/
 ```
 
+### Default User
+
+Once deployed, new books can only be created by logging in as an administrator. 
+
+The default administrator account is 'admin@zuhlke.com', with the password 'password'.
+
+
+
 
