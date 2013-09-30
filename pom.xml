@@ -335,11 +335,11 @@
           <instrumentation>
             <ignoreTrivial>true</ignoreTrivial>
             <ignores>
-              <ignore>uk.gov.bis.gv.domain.*.get*</ignore>
-              <ignore>uk.gov.bis.gv.domain.*.set*</ignore>
-              <ignore>uk.gov.bis.gv.domain.*.is*</ignore>
-              <ignore>uk.gov.bis.gv.domain.*.toString</ignore>
-              <ignore>uk.gov.bis.gv.*.with*</ignore>
+              <ignore>com.zuhlke.library.domain.*.get*</ignore>
+              <ignore>com.zuhlke.library.domain.*.set*</ignore>
+              <ignore>com.zuhlke.library.domain.*.is*</ignore>
+              <ignore>com.zuhlke.library.domain.*.toString</ignore>
+              <ignore>com.zuhlke.library.*.with*</ignore>
             </ignores>
           </instrumentation>
         </configuration>

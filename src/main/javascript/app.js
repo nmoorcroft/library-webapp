@@ -68,7 +68,7 @@ angular.module('library.app', [ 'library.services', 'library.controllers', 'libr
             return response;
         }
         function error(response) {
-            if (response.status == 403) {
+            if (response.status == 403) { // Forbidden
                 $location.path('/books');
             }
             return $q.reject(response);
