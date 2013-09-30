@@ -50,7 +50,7 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
-  <!-- A filter for added no-cache headers to api calls -->
+  <!-- Add no-cache http headers to api calls -->
   <filter>
     <filter-name>cacheFilter</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -60,7 +60,7 @@
     <url-pattern>/api/*</url-pattern>
   </filter-mapping>
 
-  <!-- A filter for validating the user's XSRF token -->
+  <!-- Validate user's XSRF token -->
   <filter>
     <filter-name>XSRFFilter</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
