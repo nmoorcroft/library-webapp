@@ -27,7 +27,7 @@ The demo webapp can be built using maven
 mvn clean package
 ```
 
-Once built, the webapp can be deployed to a default Apache Tomcat 7 install (http://tomcat.apache.org/download-70.cgi)
+Once built, the webapp can be deployed to a default Apache Tomcat 7 install (7.0.32 and above)
 
 ### Database config
 
@@ -59,6 +59,12 @@ Database username, password and jdbc url can be configured in `src/main/resource
 
 Liquibase database settings are configured in `src/main/database/liquibase.properties`
 
+### Eclipse Integration
 
+To deploy within eclipse using m2e and wtp you will need the m2e connector for wro4j, it can be installed from the following update site
+
+```
+http://download.jboss.org/jbosstools/updates/m2e-wro4j/
+```
 
 
