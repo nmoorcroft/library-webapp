@@ -89,8 +89,8 @@ angular.module('library.app', [ 'library.services', 'library.controllers', 'libr
  */
 angular.module('library.services', [ 'ngResource' ]);
 angular.module('library.directives', []);
-angular.module('library.controllers', [ 'ngCookies' ]);
-angular.module('library.filters', []);
+angular.module('library.controllers', [ 'ngCookies', 'i18n' ]);
+angular.module('library.filters', [ 'i18n' ]);
 
 
 

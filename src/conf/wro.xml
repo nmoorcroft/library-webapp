@@ -5,6 +5,7 @@
     <js>/src/main/javascript/services/*.js</js>
     <js>/src/main/javascript/controllers/*.js</js>
     <js>/src/main/javascript/directives/*.js</js>
+    <js>/src/main/javascript/filters/*.js</js>
     <css>/src/main/webapp/less/styles.less</css>
   </group>
   

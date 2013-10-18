@@ -1,13 +1,13 @@
 <div class="row well">
   <form novalidate class="form-horizontal" id="login-form" name="loginForm" data-ng-submit="login(user)">
     <div class="form-group">
-      <label class="col-2 control-label" for="input-username">Username</label>
+      <label class="col-2 control-label" for="input-username">{{'username'|i18n}}</label>
       <div class="col-6">
         <input type="text" id="input-username" class="form-control" data-ng-model="user.username" required>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-2 control-label" for="input-password">Password</label>
+      <label class="col-2 control-label" for="input-password">{{'password'|i18n}}</label>
       <div class="col-6">
         <input type="password" id="input-password" class="form-control" data-ng-model="user.password" required>
       </div>
@@ -15,8 +15,8 @@
     <div class="form-group">
       <div class="col-2"></div>
       <div class="col-10">
-        <button type="submit" class="btn btn-primary" data-ng-disabled="loginForm.$invalid">Login</button>
-        <a type="button" class="btn btn-default" href="#/books">Cancel</a>
+        <button type="submit" class="btn btn-primary" data-ng-disabled="loginForm.$invalid">{{'login'|i18n}}</button>
+        <a type="button" class="btn btn-default" href="#/books">{{'cancel'|i18n}}</a>
       </div>
     </div>
     <div class="form-group">

@@ -1,5 +1,7 @@
 package com.zuhlke.library.util;
 
+import org.springframework.stereotype.Component;
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * Factory for creating and configuring the Jackson ObjectMapper.
  * 
  */
+@Component
 public class ObjectMapperFactory {
 
     public ObjectMapper createObjectMapper() {

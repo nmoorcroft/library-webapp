@@ -11,8 +11,16 @@
   <context:component-scan base-package="com.zuhlke.library" />
   <context:property-placeholder location="classpath:env.properties" />
 
+  <bean id="angularMessageBundleServlet" class="com.zuhlke.library.util.AngularMessageBundleServlet">
+    <property name="baseName" value="i18n/messages" />
+    <property name="mapper" ref="objectMapper" />
+  </bean>
+
+  <bean id="objectMapper" factory-bean="objectMapperFactory" factory-method="createObjectMapper" />
+
   <import resource="classpath:/spring/cxf-context.xml" />
   <import resource="classpath:/spring/data-context.xml" />
   <import resource="classpath:/spring/security-context.xml" />
 
 </beans>
+

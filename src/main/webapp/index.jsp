@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="en" data-ng-app="library.app">
+<html data-ng-app="library.app">
 <head>
   <meta charset="utf-8">
+  <meta name="Version" content="${version}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -9,9 +10,7 @@
   <link href="css/app.css" rel="stylesheet" media="screen">
   
   <style>
-    [data-ng-cloak] {
-      display: none;
-    }
+    [data-ng-cloak] { display: none !important; }
   </style>
   
   <title>Library</title>
@@ -43,6 +42,9 @@
   <script type="text/javascript" src="js/angular-cookies-1.1.5.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.file-input.js"></script>
+
+  <script type="text/javascript" src="http://code.angularjs.org/1.1.5/i18n/angular-locale_${locale}.js"></script>
+  <script type="text/javascript" src="i18n.js"></script>
 
   <script type="text/javascript" src="js/app.js"></script>
 

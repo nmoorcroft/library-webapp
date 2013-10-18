@@ -27,14 +27,11 @@
 
     <jaxrs:providers>
       <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider">
-        <constructor-arg>
-          <bean id="jacksonMapper" factory-bean="objectMapperFactory" factory-method="createObjectMapper" />
-        </constructor-arg>
+        <constructor-arg ref="objectMapper" />
       </bean>
     </jaxrs:providers>
 
   </jaxrs:server>
 
-  <bean id="objectMapperFactory" class="com.zuhlke.library.util.ObjectMapperFactory" />
 
 </beans>

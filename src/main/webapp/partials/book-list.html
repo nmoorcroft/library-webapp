@@ -4,7 +4,7 @@
   <form id="search-form" data-ng-submit="search(query)">
     <div class="form-group">
       <div class="input-group">
-       <input type="text" data-ng-model="query" class="form-control" placeholder="Search by title or author" />
+       <input type="text" data-ng-model="query" class="form-control" placeholder="{{'search_by'|i18n}}" />
        <span class="search-icon input-group-addon" data-ng-click="searchIcon()">
          <i class="glyphicon glyphicon-search" data-ng-show="!showClear"></i>
          <i class="glyphicon glyphicon-remove" data-ng-show="showClear"></i>

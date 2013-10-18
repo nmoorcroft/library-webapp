@@ -20,6 +20,7 @@
     
     <http use-expressions="true" disable-url-rewriting="true" entry-point-ref="ep403">
       <intercept-url pattern="/api/books" access="permitAll" /> 
+      <intercept-url pattern="/api/messages" access="permitAll" /> 
       <intercept-url pattern="/api/books" method="POST" access="hasRole('ROLE_ADMIN')" /> 
       <intercept-url pattern="/api/books/*" access="hasRole('ROLE_ADMIN')" /> 
       <intercept-url pattern="/api/artwork/upload" access="hasRole('ROLE_ADMIN')" /> 
