@@ -1,6 +1,6 @@
 angular.module('library.controllers')
 
-.controller('bookDetailCtrl', function($scope, $routeParams, $location, $cookies, bookService) {
+.controller('bookDetailCtrl', function($scope, $routeParams, $location, $cookies, bookService, messages) {
 
   var id = $routeParams.bookId;
 
@@ -30,6 +30,7 @@ angular.module('library.controllers')
     });
   };
  
+  $('#input-artwork').attr('title', messages['browse_button']);
   $('#input-artwork').bootstrapFileInput();
   $('#input-artwork').fileupload({
     dataType : 'text',

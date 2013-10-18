@@ -1,10 +1,10 @@
 angular.module('library.controllers')
 
-.controller('signUpCtrl', function($scope, $location, userService, authService) {
+.controller('signUpCtrl', function($scope, $location, userService, authService, messages) {
   
   $scope.signup = function(user) {
     if (user.password != user.confirm) {
-      $scope.error = 'Passwords must match';
+      $scope.error = messages['password_mismatch'];
 
     } else {
       userService.save(user,
@@ -19,7 +19,7 @@ angular.module('library.controllers')
         // error
         function(response) {
           if (response.status == 409) { // Conflict
-            $scope.error = 'This email address has already been registered, please use another.';
+            $scope.error = messages['email_conflict'];
           }
         
         });
