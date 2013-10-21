@@ -286,6 +286,22 @@
           <cssDestinationFolder>${project.build.directory}/${project.build.finalName}/css</cssDestinationFolder>
           <ignoreMissingResources>false</ignoreMissingResources>
         </configuration>
+        <!-- fix for jRuby 1.7.4 dependency on missing jffi 1.2.8-SNAPSHOT -->
+        <dependencies>
+          <dependency>
+            <groupId>com.github.jnr</groupId>
+            <artifactId>jffi</artifactId>
+            <version>1.2.7</version>
+            <type>jar</type>
+          </dependency>
+          <dependency>
+            <groupId>com.github.jnr</groupId>
+            <artifactId>jffi</artifactId>
+            <version>1.2.7</version>
+            <classifier>native</classifier>
+            <type>jar</type>
+          </dependency>
+        </dependencies>
       </plugin>
 
       <!-- mvn liquibase:update -->

@@ -1,6 +1,6 @@
 angular.module('library.filters')
 
-.filter('i18n', ['messages', function (messages) {
+.filter('i18n', function (messages) {
   return function(key) {
     if (typeof messages[key] != 'undefined' && messages[key] != '') {
       return messages[key];
@@ -9,6 +9,7 @@ angular.module('library.filters')
     }
   };
   
-}]);
+});
+
 
 

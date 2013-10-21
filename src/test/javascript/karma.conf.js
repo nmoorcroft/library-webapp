@@ -26,11 +26,13 @@ module.exports = function(config) {
 
         // mocks
         '../../../src/test/javascript/lib/angular-mocks-1.1.5.js',
+        '../../../src/test/javascript/lib/i18n-mock.js',
 
         // application
         '../../../src/main/javascript/*.js',
         '../../../src/main/javascript/services/*.js',
         '../../../src/main/javascript/controllers/*.js',
+        '../../../src/main/javascript/filters/*.js',
         '../../../src/main/javascript/directives/*.js',
 
         // templates

@@ -6,6 +6,7 @@ describe('Navbar directive', function() {
   beforeEach(module('partials/navbar.html'));
   beforeEach(module('library.services'));
   beforeEach(module('library.directives'));
+  beforeEach(module('library.filters'));
 
   beforeEach(inject(function($rootScope) {
     element = angular.element('<div data-navbar></div>');
@@ -85,3 +86,4 @@ describe('Navbar directive', function() {
   }));
 
 });
+

@@ -41,7 +41,9 @@ describe('SignUpCtrl', function() {
 
   }));
 
-  it('should error for duplicate email', function() {
+  it('should error for duplicate email', inject(function(messages) {
+    
+    messages['email_conflict'] = 'This email address has already been registered, please use another.';
     
     $controller('signUpCtrl', {
       $scope : $scope,
@@ -55,10 +57,12 @@ describe('SignUpCtrl', function() {
     
     expect($scope.error).toBe('This email address has already been registered, please use another.');
     
-  });
+  }));
   
-  it('should fail when passwords do not match', function() {
+  it('should fail when passwords do not match', inject(function(messages) {
 
+    messages['password_mismatch'] = 'Passwords must match';
+    
     $controller('signUpCtrl', { $scope : $scope });
     
     $scope.signup({ email : 'email', password : 'p1', confirm : 'p2' });
@@ -66,6 +70,6 @@ describe('SignUpCtrl', function() {
     expect($scope.error).toBe('Passwords must match');
     
     
-  });
+  }));
   
 });
