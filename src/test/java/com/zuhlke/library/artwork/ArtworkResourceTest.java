@@ -32,8 +32,8 @@ public class ArtworkResourceTest {
     
     @Test
     public void shouldGetArtwork() throws Exception {
-    	byte[] artwork = toByteArray(getClass().getResourceAsStream("/img/domain.jpg"));
-    	ArtworkAdapter artworkAdapter = new ArtworkAdapter(artwork, new Date());
+        byte[] artwork = toByteArray(getClass().getResourceAsStream("/img/domain.jpg"));
+        ArtworkAdapter artworkAdapter = new ArtworkAdapter(artwork, new Date(), "image/jpeg");
         Mockito.when(mockArtworkService.loadArtwork("filename")).thenReturn(artworkAdapter);
         Response response = artworkResource.getArtwork("filename", new Date(0L));
         assertThat(response.getStatus(), is(200));
@@ -43,11 +43,11 @@ public class ArtworkResourceTest {
     
     @Test
     public void shouldGetNotModified() throws Exception {
-    	ArtworkAdapter artworkAdapter = new ArtworkAdapter(new byte[] {}, new Date(0L));
-    	Mockito.when(mockArtworkService.loadArtwork("filename")).thenReturn(artworkAdapter);
-    	Response response = artworkResource.getArtwork("filename", new Date(0L));
-    	assertThat(response.getStatus(), is(304));
-    	
+        ArtworkAdapter artworkAdapter = new ArtworkAdapter(new byte[] {}, new Date(0L), "image/jpeg");
+        Mockito.when(mockArtworkService.loadArtwork("filename")).thenReturn(artworkAdapter);
+        Response response = artworkResource.getArtwork("filename", new Date(0L));
+        assertThat(response.getStatus(), is(304));
+        
     }
     
     @Test

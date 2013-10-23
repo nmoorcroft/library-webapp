@@ -17,6 +17,8 @@
   </bean>
 
   <bean id="objectMapper" factory-bean="objectMapperFactory" factory-method="createObjectMapper" />
+  
+  <bean id="tika" class="org.apache.tika.Tika" />
 
   <import resource="classpath:/spring/cxf-context.xml" />
   <import resource="classpath:/spring/data-context.xml" />

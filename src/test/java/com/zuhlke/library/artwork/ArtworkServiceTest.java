@@ -6,21 +6,28 @@ import static org.junit.Assert.assertArrayEquals;
 
 import java.io.File;
 
+import org.apache.tika.Tika;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ArtworkServiceTest {
 
-    @InjectMocks ArtworkService artworkService = new ArtworkService();
+    ArtworkService artworkService = new ArtworkService();
+    
+    @Before
+    public void setup() {
+        artworkService.tika = new Tika();
+    }
     
     @Test
     public void shouldSaveAndLoadArtwork() throws Exception {
-    	artworkService.imgStore = "target";
-    	
+        artworkService.imgStore = "target";
+        
         byte[] artwork = toByteArray(getClass().getResourceAsStream("/img/extreme.jpg"));
+        
         String uuid = artworkService.saveArtwork(artwork);
         byte[] loaded = artworkService.loadArtwork(uuid).getData();
         
@@ -29,4 +36,5 @@ public class ArtworkServiceTest {
         deleteQuietly(new File("target/"+uuid));
         
     }
+
 }

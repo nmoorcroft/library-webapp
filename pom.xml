@@ -185,6 +185,11 @@
       <artifactId>joda-time</artifactId>
       <version>2.2</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.tika</groupId>
+      <artifactId>tika-core</artifactId>
+      <version>1.4</version>
+    </dependency>
 
     <!-- Testing -->
     <dependency>
@@ -329,7 +334,7 @@
       <plugin>
         <groupId>com.kelveden</groupId>
         <artifactId>maven-karma-plugin</artifactId>
-        <version>1.1</version>
+        <version>1.5</version>
         <executions>
           <execution>
             <goals>

@@ -4,20 +4,25 @@ import java.util.Date;
 
 public class ArtworkAdapter {
 
-	private byte[] data;
-	private Date lastModified;
-	
-	public ArtworkAdapter(byte[] data, Date lastModified) {
-		this.data = data;
-		this.lastModified = lastModified;
-	}
-	
-	public byte[] getData() {
-		return data;
-	}
-	
-	public Date getLastModified() {
-		return lastModified;
-	}
-	
+    private byte[] data;
+    private Date lastModified;
+    private String contentType;
+    
+    public ArtworkAdapter(byte[] data, Date lastModified, String contentType) {
+        this.data = data;
+        this.lastModified = lastModified;
+        this.contentType = contentType;
+    }
+    
+    public byte[] getData() {
+        return data;
+    }
+    
+    public Date getLastModified() {
+        return lastModified;
+    }
+    
+    public String getContentType() {
+        return contentType;
+    }
 }

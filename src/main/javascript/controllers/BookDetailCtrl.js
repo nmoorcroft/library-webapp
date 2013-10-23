@@ -38,12 +38,17 @@ angular.module('library.controllers')
       $scope.$apply(function() {
         $scope.book.artwork = data.result;
       });
+    },
+    fail : function(e, data) {
+      $scope.$apply(function() {
+        $scope.book.artwork = null;
+      });
     }
 
   }).bind('fileuploadsend', function (e, data) {
-  	$scope.$apply(function() {
-  	  data.headers['X-XSRF-TOKEN'] = $cookies['XSRF-TOKEN'];
-  	});
+    $scope.$apply(function() {
+      data.headers['X-XSRF-TOKEN'] = $cookies['XSRF-TOKEN'];
+    });
   
   }); 
   
