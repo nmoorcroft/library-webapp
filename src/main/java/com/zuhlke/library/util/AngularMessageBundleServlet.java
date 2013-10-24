@@ -28,7 +28,7 @@ public class AngularMessageBundleServlet implements HttpRequestHandler {
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/javascript");
-        response.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("UTF-8");
         try (PrintWriter writer = response.getWriter()) {
             writer.print("angular.module('i18n',[]).value('messages',");
             writer.print(loadBundle(request.getLocale()));

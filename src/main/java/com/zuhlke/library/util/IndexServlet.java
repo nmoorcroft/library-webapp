@@ -13,16 +13,20 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.HttpRequestHandler;
 
+/**
+ * Application index page controller
+ *
+ */
 @Component
 public class IndexServlet implements HttpRequestHandler {
 
-    @Value("${project.version}")
-    private String version;
+    @Value("${index.expires}")
+    private Long expires;
     
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("version", version);
         request.setAttribute("locale", angularLocale(request.getLocale()));
+        response.setDateHeader("Expires", System.currentTimeMillis() + (1000L * expires));
         request.getRequestDispatcher("/index.jsp").forward(request, response);
         
     }

@@ -11,13 +11,17 @@
   <context:component-scan base-package="com.zuhlke.library" />
   <context:property-placeholder location="classpath:env.properties" />
 
+  <!-- i18n support for angular application -->
   <bean id="angularMessageBundleServlet" class="com.zuhlke.library.util.AngularMessageBundleServlet">
     <property name="baseName" value="i18n/messages" />
     <property name="mapper" ref="objectMapper" />
   </bean>
 
+  <!-- configure Jackson objectMapper for JSON  -->
+  <bean id="objectMapperFactory" class="com.zuhlke.library.util.ObjectMapperFactory" />
   <bean id="objectMapper" factory-bean="objectMapperFactory" factory-method="createObjectMapper" />
   
+  <!-- Content Type analysis utilities -->
   <bean id="tika" class="org.apache.tika.Tika" />
 
   <import resource="classpath:/spring/cxf-context.xml" />

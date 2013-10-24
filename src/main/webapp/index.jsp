@@ -1,8 +1,8 @@
+<%@page contentType="text/html; charset=UTF-8" %>
 <!doctype html>
 <html data-ng-app="library.app">
 <head>
   <meta charset="utf-8">
-  <meta name="Version" content="${version}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
