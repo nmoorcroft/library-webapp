@@ -61,7 +61,7 @@ module.exports = function(config) {
         reporters : [ 'progress', 'junit', 'coverage' ],
 
         coverageReporter : {
-          type : 'text',
+          type : 'text-summary',
           dir : '../../../target/karma/coverage/'
         },
 

@@ -11,7 +11,7 @@ angular.module('library.controllers')
   }
 
   $scope.hasArtwork = function() {
-    return $scope.book.artwork !== null;  
+    return $scope.book.artwork !== undefined;  
   };
   
   $scope.artworkUrl = function() {
