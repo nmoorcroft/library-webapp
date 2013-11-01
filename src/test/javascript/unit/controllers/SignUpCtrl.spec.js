@@ -43,7 +43,7 @@ describe('SignUpCtrl', function() {
 
   it('should error for duplicate email', inject(function(messages) {
     
-    messages['email_conflict'] = 'This email address has already been registered, please use another.';
+    messages.email_conflict = 'This email address has already been registered, please use another.';
     
     $controller('signUpCtrl', {
       $scope : $scope,
@@ -61,7 +61,7 @@ describe('SignUpCtrl', function() {
   
   it('should fail when passwords do not match', inject(function(messages) {
 
-    messages['password_mismatch'] = 'Passwords must match';
+    messages.password_mismatch = 'Passwords must match';
     
     $controller('signUpCtrl', { $scope : $scope });
     

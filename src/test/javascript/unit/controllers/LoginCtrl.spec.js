@@ -40,7 +40,7 @@ describe('LoginCtrl', function() {
 
   it('should display error for invalid username/password', inject(function($location, authService, messages) {
 
-    messages['login_error'] = 'Invalid username or password.';
+    messages.login_error = 'Invalid username or password.';
     
     var deferred = $q.defer();
     deferred.reject();
