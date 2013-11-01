@@ -5,8 +5,8 @@
 
 
 <module name="Checker">
-  <!--  module name="JavadocPackage" / -->
-  <!-- module name="NewlineAtEndOfFile" / -->
+  <!-- <module name="JavadocPackage" /> -->
+  <!-- <module name="NewlineAtEndOfFile" /> -->
   <module name="Translation" />
   <module name="FileLength" />
   <module name="FileTabCharacter" />
