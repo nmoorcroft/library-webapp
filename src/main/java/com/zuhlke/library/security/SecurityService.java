@@ -77,12 +77,12 @@ public class SecurityService {
     }
 
     public Optional<User> getCurrentUser() {
-    	Object principal = getSecurityContext().getAuthentication().getPrincipal();
-    	if (principal instanceof User) {
-    		return Optional.of((User) principal);
-    	} else {
-    		return Optional.absent();
-    	}
+        Object principal = getSecurityContext().getAuthentication().getPrincipal();
+        if (principal instanceof User) {
+            return Optional.of((User) principal);
+        } else {
+            return Optional.absent();
+        }
     }
     
     public void logout() {

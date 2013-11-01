@@ -11,7 +11,7 @@ angular.module('library.controllers')
   }
 
   $scope.hasArtwork = function() {
-    return $scope.book.artwork != null;  
+    return $scope.book.artwork !== null;  
   };
   
   $scope.artworkUrl = function() {
@@ -30,7 +30,7 @@ angular.module('library.controllers')
     });
   };
  
-  $('#input-artwork').attr('title', messages['browse_button']);
+  $('#input-artwork').attr('title', messages.browse_button);
   $('#input-artwork').bootstrapFileInput();
   $('#input-artwork').fileupload({
     dataType : 'text',

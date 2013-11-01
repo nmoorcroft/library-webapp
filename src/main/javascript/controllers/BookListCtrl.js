@@ -20,7 +20,7 @@ angular.module('library.controllers')
   $scope.canEdit = authService.isAdmin();
 
   $scope.hasArtwork = function(book) {
-    return book.artwork != null;
+    return book.artwork !== null;
   };
   
 });

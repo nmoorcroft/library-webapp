@@ -36,7 +36,7 @@ public class LoginResource {
             return securityService.authenticate(loginForm.getUsername(), loginForm.getPassword());
             
         } catch (AuthenticationException e) {
-        	logger.warn(e.getMessage());
+            logger.warn(e.getMessage());
             securityService.logout();
             throw new WebApplicationException(HttpServletResponse.SC_UNAUTHORIZED);
         }
@@ -51,7 +51,7 @@ public class LoginResource {
     
     @POST @Path("/logout")
     public void logout() {
-    	securityService.logout();
+        securityService.logout();
     }
     
 }

@@ -58,18 +58,13 @@ module.exports = function(config) {
 
         // test results reporter to use
         // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-        reporters : [ 'progress', 'coverage', 'junit' ],
+        reporters : [ 'progress', 'junit', 'coverage' ],
 
         coverageReporter : {
-          type : 'text-summary',
+          type : 'text',
           dir : '../../../target/karma/coverage/'
         },
 
-//      coverageReporter : {
-//        type : 'cobertura',
-//        dir : '../../../target/karma/coverage/'
-//      },
-        
         junitReporter : {
             outputFile : '../../../target/karma/TEST-javascript.xml'
         },

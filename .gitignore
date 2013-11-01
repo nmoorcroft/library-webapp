@@ -3,5 +3,7 @@ target/
 .classpath
 .settings/
 .externalToolBuilders
+.checkstyle
+.jshintrc
 /target
 /target

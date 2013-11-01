@@ -27,25 +27,25 @@ import com.zuhlke.library.domain.json.Views;
 @Path("/books")
 public class BookResource {
 
-	final Logger logger = LoggerFactory.getLogger(BookResource.class);
-	
-	@Inject
-	private BookService bookService;
-	
-	@GET 
-	@Produces(MediaType.APPLICATION_JSON) @JsonView(Views.Book.class)
-	public List<Book> getBooks(@QueryParam("q") String query) {
-	    return bookService.findBooks(query);
-	}
-	
-	@GET @Path("/{id}") 
-	@Produces(MediaType.APPLICATION_JSON) @JsonView(Views.Book.class)
+    final Logger logger = LoggerFactory.getLogger(BookResource.class);
+    
+    @Inject
+    private BookService bookService;
+    
+    @GET 
+    @Produces(MediaType.APPLICATION_JSON) @JsonView(Views.Book.class)
+    public List<Book> getBooks(@QueryParam("q") String query) {
+        return bookService.findBooks(query);
+    }
+    
+    @GET @Path("/{id}") 
+    @Produces(MediaType.APPLICATION_JSON) @JsonView(Views.Book.class)
     public Book getBook(@PathParam("id") Long id) {
         Book book = bookService.getBook(id);
         if (book != null) return book;
         throw new WebApplicationException(Response.Status.NOT_FOUND);
     }
-	
+    
     @POST 
     @Consumes(MediaType.APPLICATION_JSON)
     public void saveBook(Book book) {

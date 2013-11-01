@@ -7,7 +7,7 @@ angular.module('library.controllers')
       $location.path('/books');
 
     }, function() {
-      $scope.error = messages['login_error'];
+      $scope.error = messages.login_error;
       user.password = undefined;
       $('#input-password').focus();
     

@@ -4,7 +4,7 @@ angular.module('library.controllers')
   
   $scope.signup = function(user) {
     if (user.password != user.confirm) {
-      $scope.error = messages['password_mismatch'];
+      $scope.error = messages.password_mismatch;
 
     } else {
       userService.save(user,
@@ -19,7 +19,7 @@ angular.module('library.controllers')
         // error
         function(response) {
           if (response.status == 409) { // Conflict
-            $scope.error = messages['email_conflict'];
+            $scope.error = messages.email_conflict;
           }
         
         });

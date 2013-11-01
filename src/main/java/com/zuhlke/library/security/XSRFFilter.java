@@ -30,8 +30,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class XSRFFilter implements Filter {
-	
-	final Logger logger = LoggerFactory.getLogger(XSRFFilter.class);
+    
+    final Logger logger = LoggerFactory.getLogger(XSRFFilter.class);
 
     public static final String X_XSRF_TOKEN_HEADER = "X-XSRF-TOKEN";
     public static final String XSRF_TOKEN_NAME = "XSRF-TOKEN";
@@ -48,7 +48,7 @@ public class XSRFFilter implements Filter {
             setXSRFToken(request, response);
             response.sendError(HttpServletResponse.SC_FORBIDDEN);
             logger.warn("Invalid XSRF-TOKEN found responding with SC_FORBIDDEN");
-    		return;
+            return;
         }
         
         setXSRFToken(request, response);
@@ -66,14 +66,14 @@ public class XSRFFilter implements Filter {
         String sessionToken = (String) request.getSession().getAttribute(XSRF_TOKEN_NAME);
 
         if (sessionToken == null) {
-	        String token = securityUtils.generateRandomString(50);
-	        request.getSession().setAttribute(XSRF_TOKEN_NAME, token);
-	
-	        Cookie cookie = new Cookie(XSRF_TOKEN_NAME, token);
-	        cookie.setMaxAge(-1);
-	        cookie.setPath(request.getContextPath());
-	
-	        response.addCookie(cookie);
+            String token = securityUtils.generateRandomString(50);
+            request.getSession().setAttribute(XSRF_TOKEN_NAME, token);
+    
+            Cookie cookie = new Cookie(XSRF_TOKEN_NAME, token);
+            cookie.setMaxAge(-1);
+            cookie.setPath(request.getContextPath());
+    
+            response.addCookie(cookie);
 
         }
         

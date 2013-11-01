@@ -1,0 +1,1 @@
+karma start src\test\javascript\karma.conf.js
