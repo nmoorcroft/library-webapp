@@ -12,6 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.zuhlke.library.domain.Book;
 import com.zuhlke.library.repositories.BookRepository;
 
+/**
+ * Manages books
+ *
+ */
 @Service
 public class BookService {
 

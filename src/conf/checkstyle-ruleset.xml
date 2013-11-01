@@ -5,8 +5,8 @@
 
 
 <module name="Checker">
-  <module name="JavadocPackage" />
-  <module name="NewlineAtEndOfFile" />
+  <!--  module name="JavadocPackage" / -->
+  <!-- module name="NewlineAtEndOfFile" / -->
   <module name="Translation" />
   <module name="FileLength" />
   <module name="FileTabCharacter" />
@@ -23,9 +23,11 @@
       <property name="allowMissingReturnTag" value="true" />
       <property name="tokens" value="METHOD_DEF" />
     </module>
+    <!-- 
     <module name="JavadocType">
       <property name="allowMissingParamTags" value="true" />
     </module>
+    -->
     <module name="JavadocStyle">
       <property name="checkFirstSentence" value="false" />
     </module>

@@ -23,6 +23,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.zuhlke.library.domain.Book;
 import com.zuhlke.library.domain.json.Views;
 
+/**
+ * REST Resource for /books
+ *
+ */
 @Component
 @Path("/books")
 public class BookResource {
@@ -42,7 +46,9 @@ public class BookResource {
     @Produces(MediaType.APPLICATION_JSON) @JsonView(Views.Book.class)
     public Book getBook(@PathParam("id") Long id) {
         Book book = bookService.getBook(id);
-        if (book != null) return book;
+        if (book != null) {
+            return book;
+        }
         throw new WebApplicationException(Response.Status.NOT_FOUND);
     }
     
